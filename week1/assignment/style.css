@@ -100,20 +100,20 @@ main {
 }
 
 .childhood > div {
-    display: flex;
-    gap: 0.8rem;
-    overflow: hidden;
+  display: flex;
+  gap: 0.8rem;
+  overflow: hidden;
 }
 
 .banner-list {
-    animation: scrollBanner 10s linear infinite;
+  animation: scrollBanner 10s linear infinite;
 
-    display: flex;
-    gap: 0.8rem;
+  display: flex;
+  gap: 0.8rem;
 }
 
 li {
-    display: inline-block;
+  display: inline-block;
 }
 
 li > img {
@@ -124,8 +124,8 @@ li > img {
 }
 
 .n1:last-child {
-    animation-delay: 10s;
-  }
+  animation-delay: 10s;
+}
 
 @keyframes scrollBanner {
   0% {
@@ -137,14 +137,38 @@ li > img {
 }
 
 .daily {
-    padding: 2rem;
-  
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .daily > h3 {
-    font-size: 20px;
-    font-weight: 600;
-  }
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  position: relative;
+}
+
+.daily > h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.daily > ul {
+  display: flex;
+  gap: 0.8rem;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+.scroll-list {
+  display: flex;
+}
+
+.left-scroll {
+  position: absolute;
+  top: 10rem;
+}
+
+.right-scroll {
+  position: absolute;
+  top: 10rem;
+  right: 2rem;
+}
