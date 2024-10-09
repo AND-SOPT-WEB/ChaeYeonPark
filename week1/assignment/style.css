@@ -33,9 +33,17 @@ header {
   gap: 2rem;
 }
 
+.category > li:hover {
+  color: rgb(255, 234, 196);
+}
+
 .icon {
   display: flex;
   gap: 1rem;
+}
+
+.icon > li:hover {
+  color: rgb(255, 234, 196);
 }
 
 .banner {
@@ -59,23 +67,29 @@ header {
   gap: 0.5rem;
 }
 
-.bannerText > p {
+.banner-text > p {
   font-size: 20px;
   font-weight: 500;
-  color: cornflowerblue;
+  color:  rgb(255, 234, 196);
 
-  background-color: aliceblue;
+  background-color: rgba(43, 23, 0, 0.128);
   padding: 0.7rem 1rem;
   border-radius: 10px;
 }
 
-.bannerText > button {
-  width: 10rem;
+.banner-text > a {
+  width: 6rem;
+  padding: 0.7rem;
+  text-align: center;
+  text-decoration: none;
   color: aliceblue;
   background-color: cornflowerblue;
-  padding: 0.7rem 1rem;
   border-radius: 10px;
   border: none;
+}
+
+.banner-text > a:hover {
+  background-color: rgb(63, 94, 153);
 }
 
 main {
@@ -123,6 +137,10 @@ li > img {
   border-radius: 10px;
 }
 
+li > img:hover {
+  animation: hoverScale 1s linear;
+}
+
 .n1:last-child {
   animation-delay: 10s;
 }
@@ -133,6 +151,18 @@ li > img {
   }
   100% {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes hoverScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
