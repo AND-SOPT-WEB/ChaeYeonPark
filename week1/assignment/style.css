@@ -58,8 +58,8 @@ header {
 
 .banner > div {
   position: absolute;
-  top: 30rem;
-  right: 2rem;
+  top: 32rem;
+  right: 4rem;
 
   display: flex;
   flex-direction: column;
@@ -68,12 +68,9 @@ header {
 }
 
 .banner-text > p {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
   color:  rgb(255, 234, 196);
-
-  background-color: rgba(43, 23, 0, 0.128);
-  padding: 0.7rem 1rem;
   border-radius: 10px;
 }
 
@@ -111,6 +108,7 @@ main {
 .childhood > h3 {
   font-size: 20px;
   font-weight: 600;
+  color: rgb(27, 11, 0);
 }
 
 .childhood > div {
@@ -179,6 +177,7 @@ li > img:hover {
 .daily > h3 {
   font-size: 20px;
   font-weight: 600;
+  color: rgb(27, 11, 0);
 }
 
 .daily > ul {
@@ -195,10 +194,16 @@ li > img:hover {
 .left-scroll {
   position: absolute;
   top: 10rem;
+  left: 0.7rem;
+  color: rgb(40, 17, 0);
+  text-decoration: none;
+
 }
 
 .right-scroll {
   position: absolute;
   top: 10rem;
-  right: 2rem;
+  right: 0.7rem;
+  color: rgb(40, 17, 0);
+  text-decoration: none;
 }
