@@ -2,8 +2,7 @@
 
 /* [헤더] header */
 .header {
-  background-color: transparent;
-
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,8 +10,7 @@
   padding: 2rem;
   width: 100%;
   box-sizing: border-box;
-  position: fixed;
-
+  background-color: transparent;
   color: white;
   z-index: 1;
 }
@@ -34,19 +32,19 @@
   gap: 2rem;
 }
 
-.logo:hover, .category li:hover {
-    color: rgb(255, 234, 196);
-  }  
+.logo:hover,
+.category li:hover {
+  color: rgb(255, 234, 196);
+}
 
 .icon {
   display: flex;
   gap: 1rem;
 }
 
-.icon > li:hover {
+.icon li:hover {
   color: rgb(255, 234, 196);
 }
-
 
 /* [홈 배너] home-banner  */
 .home-banner {
@@ -71,21 +69,23 @@
 }
 
 .home-banner-text p {
+  color: rgb(255, 234, 196);
   font-size: 15px;
   font-weight: 500;
-  color: rgb(255, 234, 196);
   border-radius: 10px;
 }
 
 .home-banner-text a {
   width: 6rem;
   padding: 0.7rem;
-  text-align: center;
-  text-decoration: none;
+
   color: aliceblue;
   background-color: cornflowerblue;
-  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+
   border: none;
+  border-radius: 10px;
 }
 
 .home-banner-text a:hover {
@@ -93,59 +93,57 @@
 }
 
 .main {
-  background-color: rgb(255, 234, 196);
-
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  background-color: rgb(255, 234, 196);
 }
 
 /* [무한 배너] childhood */
 .childhood {
-  padding: 2rem;
-
   display: flex;
   flex-direction: column;
+  padding: 2rem;
 }
 
 .childhood h3 {
+  margin-bottom: 1rem;
+  color: rgb(27, 11, 0);
   font-size: 20px;
   font-weight: 600;
-  color: rgb(27, 11, 0);
-  margin-bottom: 1rem;
 }
 
 .infinite-banner {
   display: flex;
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 }
 
 .infinite-banner-list {
-  animation: infinite-banner-scroll 10s linear infinite;
   display: flex;
+  animation: infinite-banner-scroll 10s linear infinite;
 }
 
 @keyframes infinite-banner-scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(0);
   }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
 li {
-    display: inline-block;
-  }
+  display: inline-block;
+}
 
 li img {
   width: 12rem;
   height: 12rem;
+  margin: 0rem 0.5rem;
   object-fit: cover;
   border-radius: 10px;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }
 
 .infinite-banner-list li:hover {
@@ -166,19 +164,17 @@ li img {
 
 /* [스크롤 뷰] daily */
 .daily {
-  padding: 2rem;
-
+  position: relative;
   display: flex;
   flex-direction: column;
-
-  position: relative;
+  padding: 2rem;
 }
 
 .daily h3 {
+  margin-bottom: 1rem;
+  color: rgb(27, 11, 0);
   font-size: 20px;
   font-weight: 600;
-  color: rgb(27, 11, 0);
-  margin-bottom: 1rem;
 }
 
 .daily ul {
@@ -201,4 +197,9 @@ li img {
   right: 0.7rem;
   color: rgb(40, 17, 0);
   text-decoration: none;
+}
+
+.left-scroll:hover,
+.right-scroll:hover {
+  color: rgb(114, 99, 73);
 }
