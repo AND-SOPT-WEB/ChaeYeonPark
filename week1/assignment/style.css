@@ -17,7 +17,6 @@
 
   padding: 2rem;
   width: 100%;
-  box-sizing: border-box;
   background-color: transparent;
   color: white;
   z-index: 1;
@@ -25,7 +24,6 @@
 
 .header-left {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   gap: 3rem;
 }
@@ -84,7 +82,7 @@
 }
 
 .home-banner-text a {
-  width: 6rem;
+  width: 7.5rem;
   padding: 0.7rem;
 
   color: white;
@@ -187,20 +185,19 @@ li img {
   scroll-behavior: smooth;
 }
 
-.left-scroll {
+.scroll {
   position: absolute;
   top: 10rem;
-  left: 0.7rem;
   color: var(--text-brown);
   text-decoration: none;
 }
 
+.left-scroll {
+  left: 0.7rem;
+}
+
 .right-scroll {
-  position: absolute;
-  top: 10rem;
   right: 0.7rem;
-  color: var(--text-brown);
-  text-decoration: none;
 }
 
 .left-scroll:hover,
