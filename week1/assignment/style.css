@@ -1,5 +1,13 @@
 @import url("./reset.css");
 
+:root {
+  --main-yellow: rgb(255, 234, 196);
+  --main-blue: cornflowerblue;
+  --hover-blue: rgb(63, 94, 153);
+  --text-brown: rgb(27, 11, 0);
+  --hover-brown: rgb(114, 99, 73);
+}
+
 /* [헤더] header */
 .header {
   position: fixed;
@@ -23,7 +31,7 @@
 }
 
 .logo {
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: 700;
 }
 
@@ -34,7 +42,7 @@
 
 .logo:hover,
 .category li:hover {
-  color: rgb(255, 234, 196);
+  color: var(--main-yellow);
 }
 
 .icon {
@@ -43,7 +51,7 @@
 }
 
 .icon li:hover {
-  color: rgb(255, 234, 196);
+  color: var(--main-yellow);
 }
 
 /* [홈 배너] home-banner  */
@@ -69,8 +77,8 @@
 }
 
 .home-banner-text p {
-  color: rgb(255, 234, 196);
-  font-size: 15px;
+  color: var(--main-yellow);
+  font-size: 1rem;
   font-weight: 500;
   border-radius: 10px;
 }
@@ -79,8 +87,8 @@
   width: 6rem;
   padding: 0.7rem;
 
-  color: aliceblue;
-  background-color: cornflowerblue;
+  color: white;
+  background-color: var(--main-blue);
   text-align: center;
   text-decoration: none;
 
@@ -89,7 +97,7 @@
 }
 
 .home-banner-text a:hover {
-  background-color: rgb(63, 94, 153);
+  background-color: var(--hover-blue);
 }
 
 .main {
@@ -97,7 +105,7 @@
   flex-direction: column;
   gap: 2rem;
 
-  background-color: rgb(255, 234, 196);
+  background-color: var(--main-yellow);
 }
 
 /* [무한 배너] childhood */
@@ -109,8 +117,8 @@
 
 .childhood h3 {
   margin-bottom: 1rem;
-  color: rgb(27, 11, 0);
-  font-size: 20px;
+  color: var(--text-brown);
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
@@ -132,10 +140,6 @@
   100% {
     transform: translateX(-100%);
   }
-}
-
-li {
-  display: inline-block;
 }
 
 li img {
@@ -172,8 +176,8 @@ li img {
 
 .daily h3 {
   margin-bottom: 1rem;
-  color: rgb(27, 11, 0);
-  font-size: 20px;
+  color: var(--text-brown);
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
@@ -187,7 +191,7 @@ li img {
   position: absolute;
   top: 10rem;
   left: 0.7rem;
-  color: rgb(40, 17, 0);
+  color: var(--text-brown);
   text-decoration: none;
 }
 
@@ -195,11 +199,11 @@ li img {
   position: absolute;
   top: 10rem;
   right: 0.7rem;
-  color: rgb(40, 17, 0);
+  color: var(--text-brown);
   text-decoration: none;
 }
 
 .left-scroll:hover,
 .right-scroll:hover {
-  color: rgb(114, 99, 73);
+  color: var(--hover-brown);
 }
