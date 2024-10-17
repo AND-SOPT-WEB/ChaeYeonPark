@@ -1,0 +1,206 @@
+@import url("./reset.css");
+
+:root {
+  --main-yellow: rgb(255, 234, 196);
+  --main-blue: cornflowerblue;
+  --hover-blue: rgb(63, 94, 153);
+  --text-brown: rgb(27, 11, 0);
+  --hover-brown: rgb(114, 99, 73);
+}
+
+/* [헤더] header */
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 2rem;
+  width: 100%;
+  background-color: transparent;
+  color: white;
+  z-index: 1;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.category {
+  display: flex;
+  gap: 2rem;
+}
+
+.logo:hover,
+.category li:hover {
+  color: var(--main-yellow);
+}
+
+.icon {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon li:hover {
+  color: var(--main-yellow);
+}
+
+/* [홈 배너] home-banner  */
+.home-banner {
+  position: relative;
+}
+
+.home-banner-image {
+  width: 100%;
+  height: 40rem;
+  object-fit: cover;
+}
+
+.home-banner-text {
+  position: absolute;
+  top: 32rem;
+  right: 4rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 0.5rem;
+}
+
+.home-banner-text p {
+  color: var(--main-yellow);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.home-banner-text a {
+  width: 7.5rem;
+  padding: 0.7rem;
+
+  color: white;
+  background-color: var(--main-blue);
+  text-align: center;
+  text-decoration: none;
+
+  border: none;
+  border-radius: 10px;
+}
+
+.home-banner-text a:hover {
+  background-color: var(--hover-blue);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  background-color: var(--main-yellow);
+}
+
+/* [무한 배너] childhood */
+.childhood {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.childhood h3 {
+  margin-bottom: 1rem;
+  color: var(--text-brown);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.infinite-banner {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.infinite-banner-list {
+  display: flex;
+  animation: infinite-banner-scroll 10s linear infinite;
+}
+
+@keyframes infinite-banner-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+li img {
+  width: 12rem;
+  height: 12rem;
+  margin: 0rem 0.5rem;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.infinite-banner-list li:hover {
+  animation: hover-scale 1s linear;
+}
+
+@keyframes hover-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* [스크롤 뷰] daily */
+.daily {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.daily h3 {
+  margin-bottom: 1rem;
+  color: var(--text-brown);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.daily ul {
+  display: flex;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+.scroll {
+  position: absolute;
+  top: 10rem;
+  color: var(--text-brown);
+  text-decoration: none;
+}
+
+.left-scroll {
+  left: 0.7rem;
+}
+
+.right-scroll {
+  right: 0.7rem;
+}
+
+.left-scroll:hover,
+.right-scroll:hover {
+  color: var(--hover-brown);
+}
