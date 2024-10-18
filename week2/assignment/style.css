@@ -1,0 +1,186 @@
+@import url(./reset.css);
+
+:root {
+  --lightgray: #f4f4f4;
+  --pink1: #ff8da6;
+  --pink2: #ffd1db;
+  --pink3: #ffe7ed;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  padding: 0 2rem;
+  background-color: var(--pink2);
+}
+
+.header h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.header span {
+  text-align: end;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--lightgray);
+  padding-top: 2rem;
+}
+
+.member-filter {
+  background-color: var(--pink3);
+  width: 50rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  border-radius: 5px;
+}
+
+.filter {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.filter div span {
+  background-color: var(--pink1);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7rem;
+  border-radius: 5px;
+}
+
+input {
+  background-color: white;
+  font-size: 0.8rem;
+  padding-left: 0.5rem;
+  border-radius: 5px;
+}
+
+.filter1 input {
+  width: calc(100% - 7rem);
+}
+
+.filter-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.filter-gold {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.filter-content {
+  display: flex;
+  gap: 0.3rem;
+  height: 3rem;
+
+  border-radius: 30px;
+}
+
+.filter2 input {
+  width: calc(100% - 7rem);
+}
+
+.filter3 input {
+  width: calc(100% - 7rem);
+}
+
+.filter-button {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.filter-button button {
+  width: 50%;
+  height: 2.5rem;
+  background-color: var(--pink2);
+
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+.member-table {
+  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.table-button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.table-button button {
+  width: 15%;
+  height: 2rem;
+  background-color: var(--pink2);
+
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+.table {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--lightgray);
+  border-radius: 5px;
+}
+
+table th {
+  background-color: var(--pink1);
+  height: 2.5rem;
+  padding: 1rem;
+  text-align: center;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-collapse: collapse;
+  border: 1px solid var(--lightgray);
+  border-radius: 5px;
+}
+
+table td {
+  background-color: white;
+  height: 2.5rem;
+  padding: 1rem;
+  text-align: center;
+
+  font-size: 0.8rem;
+  border-collapse: collapse;
+  border: 1px solid var(--lightgray);
+  border-radius: 5px;
+}

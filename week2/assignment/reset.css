@@ -5,6 +5,8 @@ span,
 applet,
 object,
 iframe,
+button,
+input,
 h1,
 h2,
 h3,
@@ -85,6 +87,7 @@ video {
   font-size: 62.5%;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -102,6 +105,9 @@ section {
 }
 body {
   line-height: 1;
+}
+button {
+  cursor: pointer;
 }
 ol,
 ul {

@@ -3,64 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>관리자페이지</title>
   </head>
   <body>
-    <header>
+    <header class="header">
       <i class="fa-solid fa-bars"></i>
-      <h1>회원관리페이지</h1>
-      <span>채연이</span>
+      <h1>회원 관리 페이지</h1>
+      <span>chaeneey 😋</span>
     </header>
 
-    <main>
+    <main class="main">
       <section class="member-filter">
         <section class="filter">
-          <div class="filter-name">
+          <div class="filter1 filter-content">
             <span>이름</span>
             <input placeholder="이름을 입력하세요" />
           </div>
 
-          <div class="filter-name">
+          <div class="filter1 filter-content">
             <span>영문이름</span>
             <input placeholder="영문이름을 입력하세요" />
           </div>
 
-          <div>
-            <div>
+          <div class="filter-info">
+            <div class="filter2 filter-content">
               <span>Github</span>
               <input placeholder="GitHub ID를 입력하세요" />
             </div>
 
-            <div>
+            <div class="filter2 filter-content">
               <span>성별</span>
               <input placeholder="성별 선택" />
             </div>
 
-            <div>
+            <div class="filter2 filter-content">
               <span>역할</span>
               <input placeholder="OB / YB 선택" />
             </div>
           </div>
 
-          <div>
-            <span>1주차 금잔디조</span>
-            <input placeholder="1주차 금잔디조를 입력하세요 (1~9)" />
-          </div>
+          <div class="filter-gold">
+            <div class="filter3 filter-content">
+              <span>1주차 금잔디조</span>
+              <input placeholder="1주차 금잔디조를 입력하세요 (1~9)" />
+            </div>
 
-          <div>
-            <span>2주차 금잔디조</span>
-            <input placeholder="2주차 금잔디조를 입력하세요 (1~9)" />
+            <div class="filter3 filter-content">
+              <span>2주차 금잔디조</span>
+              <input placeholder="2주차 금잔디조를 입력하세요 (1~9)" />
+            </div>
           </div>
         </section>
 
-        <section>
+        <section class="filter-button">
           <button>초기화</button>
           <button>검색</button>
         </section>
       </section>
 
       <section class="member-table">
-        <section>
+        <section class="table-button">
           <button>선택삭제</button>
           <button>추가</button>
         </section>
@@ -82,13 +85,13 @@
 
             <tr>
               <td>1</td>
+              <td>박채연</td>
+              <td>parkchaeyeon</td>
+              <td>chaeneey</td>
+              <td>여자</td>
+              <td>OB</td>
               <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
+              <td>9</td>
             </tr>
           </table>
         </section>
