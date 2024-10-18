@@ -7,6 +7,7 @@
   --pink3: #ffe7ed;
 }
 
+/* header */
 .header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -29,6 +30,7 @@
   font-weight: 600;
 }
 
+/* main */
 .main {
   display: flex;
   flex-direction: column;
@@ -40,92 +42,86 @@
   padding-top: 2rem;
 }
 
+/* member-filter */
 .member-filter {
-  background-color: var(--pink3);
-  width: 50rem;
-  padding: 1rem;
-
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 
+  width: 50rem;
+  padding: 1rem;
+  background-color: var(--pink3);
   border-radius: 5px;
 }
 
-.filter {
+.filter-content-wrapper {
   display: grid;
   grid-template-rows: repeat(4, 1fr);
-  width: 100%;
   gap: 0.5rem;
+  width: 100%;
 }
 
-.filter div span {
-  background-color: var(--pink1);
-  color: white;
-  font-size: 0.8rem;
-  font-weight: 500;
+.filter-content {
+  display: flex;
+  height: 3rem;
+}
+
+.filter-content span {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 7rem;
   border-radius: 5px;
+  background-color: var(--pink1);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
-input {
+.input {
   background-color: white;
   font-size: 0.8rem;
   padding-left: 0.5rem;
   border-radius: 5px;
-}
-
-.filter1 input {
+  border: none;
   width: calc(100% - 7rem);
 }
 
-.filter-info {
+.filter-three-content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
 }
 
-.filter-gold {
+.filter-two-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
 }
 
-.filter-content {
-  display: flex;
-  gap: 0.3rem;
-  height: 3rem;
-
-  border-radius: 30px;
-}
-
-.filter2 input {
-  width: calc(100% - 7rem);
-}
-
-.filter3 input {
-  width: calc(100% - 7rem);
-}
-
-.filter-button {
+.filter-button-wrapper {
   display: flex;
   gap: 1rem;
   width: 100%;
 }
 
-.filter-button button {
+.filter-button {
   width: 50%;
   height: 2.5rem;
-  background-color: var(--pink2);
-
   font-size: 0.8rem;
   font-weight: 500;
   border-radius: 5px;
 }
 
+.filter-reset-button {
+  background-color: var(--lightgray);
+}
+
+.filter-search-button {
+  background-color: var(--pink2);
+}
+
+/* member-table */
 .member-table {
   width: 50rem;
   display: flex;
@@ -133,34 +129,33 @@ input {
   gap: 0.5rem;
 }
 
-.table-button {
+.table-button-wrapper {
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
 }
 
-.table-button button {
+.table-button {
   width: 15%;
   height: 2rem;
-  background-color: var(--pink2);
-
   font-size: 0.8rem;
   font-weight: 500;
   border-radius: 5px;
+  background-color: var(--pink2);
 }
 
-.table {
+.table-content-wrapper {
   width: 100%;
 }
 
-table {
+.table-content {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid var(--lightgray);
   border-radius: 5px;
 }
 
-table th {
+.table-content th {
   background-color: var(--pink1);
   height: 2.5rem;
   padding: 1rem;
@@ -173,7 +168,7 @@ table th {
   border-radius: 5px;
 }
 
-table td {
+.table-content td {
   background-color: white;
   height: 2.5rem;
   padding: 1rem;

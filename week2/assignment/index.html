@@ -15,64 +15,72 @@
 
     <main class="main">
       <section class="member-filter">
-        <section class="filter">
-          <div class="filter1 filter-content">
+        <section class="filter-content-wrapper">
+          <div class="filter-content filter-one-row">
             <span>이름</span>
-            <input placeholder="이름을 입력하세요" />
+            <input class="input input-name" placeholder="이름을 입력하세요" />
           </div>
 
-          <div class="filter1 filter-content">
+          <div class="filter-content filter-one-row">
             <span>영문이름</span>
-            <input placeholder="영문이름을 입력하세요" />
+            <input class="input input-engname" placeholder="영문이름을 입력하세요" />
           </div>
 
-          <div class="filter-info">
-            <div class="filter2 filter-content">
+          <div class="filter-three-content">
+            <div class="filter-content filter-three-row">
               <span>Github</span>
-              <input placeholder="GitHub ID를 입력하세요" />
+              <input class="input input-github" placeholder="GitHub ID를 입력하세요" />
             </div>
 
-            <div class="filter2 filter-content">
+            <div class="filter-content filter-three-row">
               <span>성별</span>
-              <input placeholder="성별 선택" />
+              <select class="input input-gender">
+                <option value="" disabled selected>성별 선택</option>
+                <option value="female">여자</option>
+                <option value="male">남자</option>
+              </select>
             </div>
 
-            <div class="filter2 filter-content">
+            <div class="filter-content filter-three-row">
               <span>역할</span>
-              <input placeholder="OB / YB 선택" />
+              <select class="input input-role">
+                <option value="" disabled selected>OB / YB 선택</option>
+                <option value="ob">OB</option>
+                <option value="yb">YB</option>
+              </select>
             </div>
           </div>
 
-          <div class="filter-gold">
-            <div class="filter3 filter-content">
+          <div class="filter-two-content">
+            <div class="filter-content filter-two-row">
               <span>1주차 금잔디조</span>
-              <input placeholder="1주차 금잔디조를 입력하세요 (1~9)" />
+              <input class="input input-week1" placeholder="1주차 금잔디조를 입력하세요 (1~9)" />
             </div>
 
-            <div class="filter3 filter-content">
+            <div class="filter-content filter-two-row">
               <span>2주차 금잔디조</span>
-              <input placeholder="2주차 금잔디조를 입력하세요 (1~9)" />
+              <input class="input input-week2" placeholder="2주차 금잔디조를 입력하세요 (1~9)" />
             </div>
           </div>
         </section>
 
-        <section class="filter-button">
-          <button>초기화</button>
-          <button>검색</button>
+        <section class="filter-button-wrapper">
+          <button class="filter-button filter-reset-button">초기화</button>
+          <button class="filter-button filter-search-button">검색</button>
         </section>
       </section>
 
       <section class="member-table">
-        <section class="table-button">
-          <button>선택삭제</button>
-          <button>추가</button>
+        <section class="table-button-wrapper">
+          <button class="table-button member-delete-button">선택삭제</button>
+          <button class="table-button member-add-button">추가</button>
         </section>
 
-        <section class="table">
-          <table>
+        <section class="table-content-wrapper">
+          <table class="table-content">
             <tr>
               <th>
-                <input type="checkbox" />
+                <input type="checkbox"/>
               </th>
               <th>이름</th>
               <th>영문이름</th>
