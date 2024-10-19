@@ -16,12 +16,16 @@
     <main class="main">
       <section class="member-filter">
         <section class="filter-content-wrapper">
-          <div class="filter-content filter-one-row">
+          <div class="filter-content filter-one-row a1">
             <span>이름</span>
-            <input class="filter-input filter-input-name" placeholder="이름을 입력하세요" />
+            <input
+              class="filter-input filter-input-name"
+              placeholder="이름을 입력하세요"
+              value=""
+            />
           </div>
 
-          <div class="filter-content filter-one-row">
+          <div class="filter-content filter-one-row a2">
             <span>영문이름</span>
             <input
               class="filter-input filter-input-engname"
@@ -29,51 +33,55 @@
             />
           </div>
 
-          <div class="filter-three-content">
-            <div class="filter-content filter-three-row">
-              <span>Github</span>
-              <input
-                class="filter-input filter-input-github"
-                placeholder="GitHub ID를 입력하세요"
-              />
-            </div>
+          <!-- <div class="filter-three-content"> -->
+          <div class="filter-content filter-three-row a3">
+            <span>Github</span>
+            <input
+              class="filter-input filter-input-github"
+              placeholder="GitHub ID를 입력하세요"
+            />
+          </div>
 
-            <div class="filter-content filter-three-row">
-              <span>성별</span>
-              <select class="filter-input filter-input-gender">
+          <div class="filter-content filter-three-row a4">
+            <span>성별</span>
+            <div class="filter-input">
+              <select class="filter-select filter-input-gender">
                 <option value="" disabled selected>성별 선택</option>
                 <option value="female">여자</option>
                 <option value="male">남자</option>
               </select>
             </div>
+          </div>
 
-            <div class="filter-content filter-three-row">
-              <span>역할</span>
-              <select class="filter-input filter-input-role">
+          <div class="filter-content filter-three-row a5">
+            <span>역할</span>
+            <div class="filter-input">
+              <select class="filter-select filter-input-role">
                 <option value="" disabled selected>OB / YB 선택</option>
-                <option value="ob">OB</option>
-                <option value="yb">YB</option>
+                <option value="OB">OB</option>
+                <option value="YB">YB</option>
               </select>
             </div>
           </div>
+          <!-- </div> -->
 
-          <div class="filter-two-content">
-            <div class="filter-content filter-two-row">
-              <span>1주차 금잔디조</span>
-              <input
-                class="filter-input filter-input-week1"
-                placeholder="1주차 금잔디조를 입력하세요 (1~9)"
-              />
-            </div>
-
-            <div class="filter-content filter-two-row">
-              <span>2주차 금잔디조</span>
-              <input
-                class="filter-input filter-input-week2"
-                placeholder="2주차 금잔디조를 입력하세요 (1~9)"
-              />
-            </div>
+          <!-- <div class="filter-two-content"> -->
+          <div class="filter-content filter-two-row a6">
+            <span>1주차 금잔디조</span>
+            <input
+              class="filter-input filter-input-week1"
+              placeholder="1주차 금잔디조를 입력하세요 (1~9)"
+            />
           </div>
+
+          <div class="filter-content filter-two-row a7">
+            <span>2주차 금잔디조</span>
+            <input
+              class="filter-input filter-input-week2"
+              placeholder="2주차 금잔디조를 입력하세요 (1~9)"
+            />
+          </div>
+          <!-- </div> -->
         </section>
 
         <section class="filter-button-wrapper">
@@ -90,18 +98,9 @@
 
         <section class="table-content-wrapper">
           <table class="table-content">
-            <tr>
-              <th>
-                <input type="checkbox" />
-              </th>
-              <th>이름</th>
-              <th>영문이름</th>
-              <th>GitHub</th>
-              <th>성별</th>
-              <th>역할</th>
-              <th>1주차 금잔디</th>
-              <th>2주차 금잔디</th>
-            </tr>
+
+
+
           </table>
         </section>
       </section>
@@ -142,19 +141,25 @@
           <span>역할</span>
           <select class="modal-input">
             <option value="" disabled selected>OB / YB 선택</option>
-            <option value="ob">OB</option>
-            <option value="yb">YB</option>
+            <option value="OB">OB</option>
+            <option value="YB">YB</option>
           </select>
         </div>
 
         <div class="modal-content">
           <span>1주차 금잔디조</span>
-          <input class="modal-input" placeholder="1주차 금잔디조를 입력하세요 (1~9)" />
+          <input
+            class="modal-input"
+            placeholder="1주차 금잔디조를 입력하세요 (1~9)"
+          />
         </div>
 
         <div class="modal-content">
           <span>2주차 금잔디조</span>
-          <input class="modal-input" placeholder="2주차 금잔디조를 입력하세요 (1~9)" />
+          <input
+            class="modal-input"
+            placeholder="2주차 금잔디조를 입력하세요 (1~9)"
+          />
         </div>
       </section>
 
