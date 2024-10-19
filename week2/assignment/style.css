@@ -179,3 +179,14 @@
   border: 1px solid var(--lightgray);
   border-radius: 5px;
 }
+
+/* member-modal */
+.member-modal {
+    background-color: aquamarine;
+    width: 30rem;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
