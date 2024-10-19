@@ -27,6 +27,7 @@ const renderTableHeader = () => {
 };
 
 const renderMemberList = (data) => {
+  renderTableHeader();
   const memberListData = data.map((member) => {
     return `            
           <tr class="tr">
@@ -45,7 +46,6 @@ const renderMemberList = (data) => {
   memberList.innerHTML += memberListData.join("");
 };
 
-renderTableHeader();
 renderMemberList(membersData);
 
 // 검색버튼 > 필터링
@@ -109,7 +109,6 @@ filterSearchBtn.addEventListener("click", () => {
 
   memberList.textContent = "";
 
-  renderTableHeader();
   renderMemberList(filteredMemberList);
 });
 
@@ -117,5 +116,13 @@ filterSearchBtn.addEventListener("click", () => {
 const filterResetBtn = document.querySelector(".filter-reset-button");
 
 filterResetBtn.addEventListener("click", () => {
-    
-})
+  filterInputName.value = "";
+  filterInputEngName.value = "";
+  filterInputGithub.value = "";
+  filterInputGender.value = "";
+  filterInputRole.value = "";
+  filterInputWeek1.value = "";
+  filterInputWeek2.value = "";
+
+  renderMemberList(membersData);
+});
