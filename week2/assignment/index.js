@@ -114,3 +114,17 @@ headerCheckbox.addEventListener("click", () => {
     checkbox.checked = headerCheckbox.checked;
   });
 });
+
+// 새 멤버 추가
+const openModalBtn = document.querySelector(".modal-open-button");
+const addMemberModal = document.querySelector(".member-modal");
+const closeModalBtn = document.querySelector(".modal-close-button");
+
+openModalBtn.addEventListener("click", () => {
+  addMemberModal.style.display = "flex";
+});
+
+closeModalBtn.addEventListener("click", () => {
+  addMemberModal.style.display = "none";
+});
+
