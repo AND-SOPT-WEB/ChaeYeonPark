@@ -8,24 +8,7 @@ const membersData = JSON.parse(localStorage.getItem("membersData"));
 
 const memberList = document.querySelector(".table-body");
 
-// const renderTableHeader = () => {
-//   const tableHeader = `
-//     <tr>
-//         <th><input type="checkbox" class="table-header-checkbox"/></th>
-//         <th>이름</th>
-//         <th>영문이름</th>
-//         <th>GitHub</th>
-//         <th>성별</th>
-//         <th>역할</th>
-//         <th>1주차 금잔디</th>
-//         <th>2주차 금잔디</th>
-//     </tr>`;
-
-//   memberList.innerHTML = tableHeader;
-// };
-
 const renderMemberList = (data) => {
-  //   renderTableHeader();
   memberList.textContent = "";
   const memberListData = data.map((member) => {
     return `            
@@ -57,60 +40,6 @@ const filterInputRole = document.querySelector(".filter-input-role");
 const filterInputWeek1 = document.querySelector(".filter-input-week1");
 const filterInputWeek2 = document.querySelector(".filter-input-week2");
 
-// filterSearchBtn.addEventListener("click", () => {
-//   const filteredMemberList = membersData.reduce((prev, member) => {
-//     const filteredName = filterInputName.value
-//       ? member.name.includes(filterInputName.value)
-//       : true;
-
-//     const filteredEngName = filterInputEngName.value
-//       ? member.englishName
-//           .toLowerCase()
-//           .includes(filterInputEngName.value.toLowerCase())
-//       : true;
-
-//     const filteredGithub = filterInputGithub.value
-//       ? member.github.includes(filterInputGithub.value)
-//       : true;
-
-//     const filteredGender = filterInputGender.value
-//       ? member.gender === filterInputGender.value
-//       : true;
-
-//     const filteredRole = filterInputRole.value
-//       ? member.role === filterInputRole.value
-//       : true;
-
-//     const filteredWeek1 = filterInputWeek1.value
-//       ? member.firstWeekGroup === Number(filterInputWeek1.value)
-//       : true;
-
-//     const filteredWeek2 = filterInputWeek2.value
-//       ? member.secondWeekGroup === Number(filterInputWeek2.value)
-//       : true;
-
-//     if (
-//       filteredName &&
-//       filteredEngName &&
-//       filteredGithub &&
-//       filteredGender &&
-//       filteredRole &&
-//       filteredWeek1 &&
-//       filteredWeek2
-//     ) {
-//       prev.push(member);
-//     }
-
-//     return prev;
-//   }, []);
-
-//   console.log(filteredMemberList);
-
-//   tableBody.textContent = "";
-
-//   renderMemberList(filteredMemberList);
-// });
-
 filterSearchBtn.addEventListener("click", () => {
   const filteredMemberList = membersData.filter((member) => {
     const {
@@ -123,21 +52,41 @@ filterSearchBtn.addEventListener("click", () => {
       secondWeekGroup,
     } = member;
 
+    const isNameFiltered = filterInputName.value
+      ? name.includes(filterInputName.value)
+      : true;
+    const isEngNameFiltered = filterInputEngName.value
+      ? englishName
+          .toLowerCase()
+          .includes(filterInputEngName.value.toLowerCase())
+      : true;
+    const isGithubFiltered = filterInputGithub.value
+      ? github.toLowerCase().includes(filterInputGithub.value.toLowerCase())
+      : true;
+    const isGenderFiltered = filterInputGender.value
+      ? gender === filterInputGender.value
+      : true;
+    const isRoleFiltered = filterInputRole.value
+      ? role === filterInputRole.value
+      : true;
+    const isFirstWeekGroupFiltered = filterInputWeek1.value
+      ? firstWeekGroup === Number(filterInputWeek1.value)
+      : true;
+    const isSecondWeekGroupFiltered = filterInputWeek2.value
+      ? secondWeekGroup === Number(filterInputWeek2.value)
+      : true;
+
     return (
-      name.includes(filterInputName.value) &&
-      englishName
-        .toLowerCase()
-        .includes(filterInputEngName.value.toLowerCase()) &&
-      github.toLowerCase().includes(filterInputGithub.value.toLowerCase()) &&
-      gender.includes(filterInputGender.value) &&
-      role.includes(filterInputRole.value) 
-    //   &&
-    //   firstWeekGroup === Number(filterInputWeek1.value) &&
-    //   secondWeekGroup === Number(filterInputWeek2.value)
+      isNameFiltered &&
+      isEngNameFiltered &&
+      isGithubFiltered &&
+      isGenderFiltered &&
+      isRoleFiltered &&
+      isFirstWeekGroupFiltered &&
+      isSecondWeekGroupFiltered
     );
   });
 
-  console.log(filteredMemberList);
   renderMemberList(filteredMemberList);
 });
 
