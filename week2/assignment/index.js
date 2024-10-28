@@ -2,7 +2,11 @@ import { members } from "./memberData.js";
 
 // 페이지가 로드되면 로컬스토리지에 memberData를 set
 // memberData를 get 후 map돌려서 table 채우기
-window.localStorage.setItem("membersData", JSON.stringify(members));
+
+if (!localStorage.getItem("membersData")) {
+  localStorage.setItem("membersData", JSON.stringify(members));
+}
+// localStorage.setItem("membersData", JSON.stringify(members));
 
 const membersData = JSON.parse(localStorage.getItem("membersData"));
 
@@ -128,3 +132,35 @@ closeModalBtn.addEventListener("click", () => {
   addMemberModal.style.display = "none";
 });
 
+const addMemberBtn = document.querySelector(".add-member-button");
+const modalInputName = document.querySelector(".modal-input-name");
+const modalInputEngName = document.querySelector(".modal-input-engname");
+const modalInputGithub = document.querySelector(".modal-input-github");
+const modalInputGender = document.querySelector(".modal-input-gender");
+const modalInputRole = document.querySelector(".modal-input-role");
+const modalInputWeek1 = document.querySelector(".modal-input-week1");
+const modalInputWeek2 = document.querySelector(".modal-input-week2");
+
+// 입력값으로 새 객체를 만들기
+// 로컬 스토리지에 있는 배열 가져와서 복사 후 그 배열에 push
+// 그리고 그 배열을 다시 로컬 스토리지에 올리기
+addMemberBtn.addEventListener("click", () => {
+  const prevMemberData = [...membersData];
+
+  const newMember = {
+    id: prevMemberData.length + 1,
+    name: modalInputName.value,
+    englishName: modalInputEngName.value,
+    github: modalInputGithub.value,
+    gender: modalInputGender.value,
+    role: modalInputRole.value,
+    firstWeekGroup: Number(modalInputWeek1.value),
+    secondWeekGroup: Number(modalInputWeek2.value),
+  };
+
+  prevMemberData.push(newMember);
+  localStorage.setItem("membersData", JSON.stringify(prevMemberData));
+
+  addMemberModal.style.display = "none";
+  renderMemberList(prevMemberData);
+});
