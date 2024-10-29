@@ -156,15 +156,15 @@ deleteMemberBtn.addEventListener("click", () => {
 
 // 새 멤버 추가
 const openModalBtn = document.querySelector(".modal-open-button");
-const addMemberModal = document.querySelector(".member-modal");
+const addMemberModal = document.querySelector(".add-member-modal");
 const closeModalBtn = document.querySelector(".modal-close-button");
 
 openModalBtn.addEventListener("click", () => {
-  addMemberModal.style.display = "flex";
+  addMemberModal.showModal();
 });
 
 closeModalBtn.addEventListener("click", () => {
-  addMemberModal.style.display = "none";
+  addMemberModal.close();
 });
 
 const addMemberBtn = document.querySelector(".add-member-button");
@@ -196,6 +196,6 @@ addMemberBtn.addEventListener("click", () => {
   prevMemberData.push(newMember);
   localStorage.setItem("membersData", JSON.stringify(prevMemberData));
 
-  addMemberModal.style.display = "none";
+  addMemberModal.close();
   renderMemberList(prevMemberData);
 });

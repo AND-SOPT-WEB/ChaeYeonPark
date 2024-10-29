@@ -212,7 +212,7 @@
   width: 25rem;
   padding: 2rem;
 
-  display: none; /* addMemberBtn 누르면 flex로 변경 */
+  display: flex;
   flex-direction: column;
   gap: 2rem;
 
