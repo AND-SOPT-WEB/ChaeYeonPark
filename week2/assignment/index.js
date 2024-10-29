@@ -143,8 +143,6 @@ deleteMemberBtn.addEventListener("click", () => {
     }
   });
 
-  console.log(deleteMemberIds);
-
   // 같은 id 값을 가지지 않은 친구들만 filter
   const updateMemberList = prevMemberList.filter(
     (member) => !deleteMemberIds.includes(member.id)
@@ -165,6 +163,7 @@ openModalBtn.addEventListener("click", () => {
 
 closeModalBtn.addEventListener("click", () => {
   addMemberModal.close();
+  resetModalValue();
 });
 
 const addMemberBtn = document.querySelector(".add-member-button");
@@ -180,22 +179,48 @@ const modalInputWeek2 = document.querySelector(".modal-input-week2");
 // 로컬 스토리지에 있는 배열 가져와서 복사 후 그 배열에 push
 // 그리고 그 배열을 다시 로컬 스토리지에 올리기
 addMemberBtn.addEventListener("click", () => {
-  const prevMemberData = [...membersData];
+  //입력값이 있을 때
+  if (
+    modalInputName.value &&
+    modalInputEngName.value &&
+    modalInputGithub.value &&
+    modalInputGender.value &&
+    modalInputRole.value &&
+    modalInputWeek1.value &&
+    modalInputWeek2.value
+  ) {
+    const prevMemberList = JSON.parse(localStorage.getItem("membersData"));
 
-  const newMember = {
-    id: prevMemberData.length + 1,
-    name: modalInputName.value,
-    englishName: modalInputEngName.value,
-    github: modalInputGithub.value,
-    gender: modalInputGender.value,
-    role: modalInputRole.value,
-    firstWeekGroup: Number(modalInputWeek1.value),
-    secondWeekGroup: Number(modalInputWeek2.value),
-  };
+    const newMember = {
+      id: prevMemberList.length + 1,
+      name: modalInputName.value,
+      englishName: modalInputEngName.value,
+      github: modalInputGithub.value,
+      gender: modalInputGender.value,
+      role: modalInputRole.value,
+      firstWeekGroup: Number(modalInputWeek1.value),
+      secondWeekGroup: Number(modalInputWeek2.value),
+    };
 
-  prevMemberData.push(newMember);
-  localStorage.setItem("membersData", JSON.stringify(prevMemberData));
+    const newMemberList = [...prevMemberList];
+    newMemberList.push(newMember);
+    localStorage.setItem("membersData", JSON.stringify(newMemberList));
 
-  addMemberModal.close();
-  renderMemberList(prevMemberData);
+    addMemberModal.close();
+    resetModalValue();
+    renderMemberList(newMemberList);
+  } else {
+    alert("모든 값을 입력하세요.");
+  }
 });
+
+// 모달 초기화 함수
+const resetModalValue = () => {
+  modalInputName.value = "";
+  modalInputEngName.value = "";
+  modalInputGithub.value = "";
+  modalInputGender.value = "";
+  modalInputRole.value = "";
+  modalInputWeek1.value = "";
+  modalInputWeek2.value = "";
+};
