@@ -20,20 +20,25 @@ if (!localStorage.getItem("membersData")) {
 }
 
 // 데이터 렌더링
-const membersData = JSON.parse(localStorage.getItem("membersData"));
-renderMemberList(membersData);
+const membersData = () => {
+  return JSON.parse(localStorage.getItem("membersData"));
+};
+
+renderMemberList(membersData());
+setupCheckbox();
+setupModal();
 
 // 데이터 필터링
 const filterSearchBtn = document.querySelector(".filter-search-button");
 filterSearchBtn.addEventListener("click", () => {
-  renderMemberList(filterMemberList(membersData));
+  renderMemberList(filterMemberList(membersData()));
 });
 
 // 필터 초기화
 const filterResetBtn = document.querySelector(".filter-reset-button");
 filterResetBtn.addEventListener("click", () => {
   initializeFilterValue();
-  renderMemberList(membersData);
+  renderMemberList(membersData());
 });
 
 // 멤버 삭제
@@ -58,6 +63,3 @@ addMemberBtn.addEventListener("click", () => {
     alert("모든 값을 입력하세요.");
   }
 });
-
-setupCheckbox();
-setupModal();
