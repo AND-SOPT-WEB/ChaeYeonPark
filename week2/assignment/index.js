@@ -16,7 +16,7 @@ const renderMemberList = (data) => {
   memberList.textContent = "";
   const memberListData = data.map((member) => {
     return `            
-          <tr class="tr">
+          <tr class="tr" id="${member.id}">
                     <td><input type="checkbox" class="filter-checkbox" /></td>
                     <td>${member.name}</td>
                     <td>${member.englishName}</td>
@@ -117,6 +117,41 @@ headerCheckbox.addEventListener("click", () => {
   filterCheckboxAll.forEach((checkbox) => {
     checkbox.checked = headerCheckbox.checked;
   });
+});
+
+// 체크박스 하나하나 눌러서 전체 선택이 되면 위의 체크박스도 checked 되도록 + 체크박스 하나라도 취소하면 전체 취소 풀리게!
+filterCheckboxAll.forEach((checkbox) => {
+  checkbox.addEventListener("click", () => {
+    headerCheckbox.checked = [...filterCheckboxAll].every(
+      (checkbox) => checkbox.checked
+    );
+  });
+});
+
+// 멤버 삭제
+const deleteMemberBtn = document.querySelector(".member-delete-button");
+
+deleteMemberBtn.addEventListener("click", () => {
+  const deleteMemberIds = [];
+  const prevMemberList = JSON.parse(localStorage.getItem("membersData"));
+  const filterCheckboxAll = document.querySelectorAll(".filter-checkbox");
+
+  // 삭제할 것들의 id 담기
+  filterCheckboxAll.forEach((checkbox) => {
+    if (checkbox.checked) {
+      deleteMemberIds.push(Number(checkbox.parentNode.parentNode.id));
+    }
+  });
+
+  console.log(deleteMemberIds);
+
+  // 같은 id 값을 가지지 않은 친구들만 filter
+  const updateMemberList = prevMemberList.filter(
+    (member) => !deleteMemberIds.includes(member.id)
+  );
+
+  localStorage.setItem("membersData", JSON.stringify(updateMemberList));
+  renderMemberList(updateMemberList);
 });
 
 // 새 멤버 추가
