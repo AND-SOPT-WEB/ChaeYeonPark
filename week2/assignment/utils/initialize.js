@@ -35,3 +35,12 @@ export const initializeModalValue = () => {
   modalInputWeek1.value = "";
   modalInputWeek2.value = "";
 };
+
+// 체크박스 초기화
+const headerCheckbox = document.querySelector(".table-header-checkbox");
+const filterCheckboxAll = document.querySelectorAll(".filter-checkbox");
+
+export const initializeCheckbox = () => {
+  headerCheckbox.checked = false;
+  filterCheckboxAll.forEach((checkbox) => (checkbox.checked = false));
+};

@@ -28,34 +28,34 @@ const modalInputRole = document.querySelector(".modal-input-role");
 const modalInputWeek1 = document.querySelector(".modal-input-week1");
 const modalInputWeek2 = document.querySelector(".modal-input-week2");
 
+export const validateInput = () => {
+  return modalInputName.value &&
+    modalInputEngName.value &&
+    modalInputGithub.value &&
+    modalInputGender.value &&
+    modalInputRole.value &&
+    modalInputWeek1.value &&
+    modalInputWeek2.value
+    ? true
+    : false;
+};
+
 export const addMember = () => {
-  if (
-    !modalInputName.value &&
-    !modalInputEngName.value &&
-    !modalInputGithub.value &&
-    !modalInputGender.value &&
-    !modalInputRole.value &&
-    !modalInputWeek1.value &&
-    !modalInputWeek2.value
-  ) {
-    alert("모든 값을 입력하세요.");
-  } else {
-    const prevMemberList = JSON.parse(localStorage.getItem("membersData"));
+  const prevMemberList = JSON.parse(localStorage.getItem("membersData"));
 
-    const newMember = {
-      id: prevMemberList.length + 1,
-      name: modalInputName.value,
-      englishName: modalInputEngName.value,
-      github: modalInputGithub.value,
-      gender: modalInputGender.value,
-      role: modalInputRole.value,
-      firstWeekGroup: Number(modalInputWeek1.value),
-      secondWeekGroup: Number(modalInputWeek2.value),
-    };
+  const newMember = {
+    id: prevMemberList.length + 1,
+    name: modalInputName.value,
+    englishName: modalInputEngName.value,
+    github: modalInputGithub.value,
+    gender: modalInputGender.value,
+    role: modalInputRole.value,
+    firstWeekGroup: Number(modalInputWeek1.value),
+    secondWeekGroup: Number(modalInputWeek2.value),
+  };
 
-    const newMemberList = [...prevMemberList];
-    newMemberList.push(newMember);
+  const newMemberList = [...prevMemberList];
+  newMemberList.push(newMember);
 
-    return newMemberList;
-  }
+  return newMemberList;
 };

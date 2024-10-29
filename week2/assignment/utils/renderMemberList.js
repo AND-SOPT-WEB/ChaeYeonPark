@@ -1,3 +1,5 @@
+import { setupCheckbox } from "./setupCheckbox.js";
+
 export const renderMemberList = (data) => {
   const memberList = document.querySelector(".table-body");
   memberList.textContent = "";
@@ -23,4 +25,5 @@ export const renderMemberList = (data) => {
   });
 
   memberList.innerHTML += memberListData.join("");
+  setupCheckbox();
 };
