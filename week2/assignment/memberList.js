@@ -3,9 +3,8 @@ import {
   addMember,
   validateInput,
 } from "./utils/editMemberList.js";
-import { renderMemberList } from "./utils/renderMemberList.js";
+import { membersData, renderMemberList } from "./utils/renderMemberList.js";
 import {
-  initializeModalValue,
   initializeFilterValue,
   initializeCheckbox,
 } from "./utils/initialize.js";
@@ -19,11 +18,6 @@ if (!localStorage.getItem("membersData")) {
   localStorage.setItem("membersData", JSON.stringify(members));
 }
 
-// 데이터 렌더링
-const membersData = () => {
-  return JSON.parse(localStorage.getItem("membersData"));
-};
-
 renderMemberList(membersData());
 setupCheckbox();
 setupModal();
@@ -31,7 +25,7 @@ setupModal();
 // 데이터 필터링
 const filterSearchBtn = document.querySelector(".filter-search-button");
 filterSearchBtn.addEventListener("click", () => {
-  renderMemberList(filterMemberList(membersData()));
+  renderMemberList(filterMemberList());
 });
 
 // 필터 초기화
@@ -56,9 +50,8 @@ addMemberBtn.addEventListener("click", () => {
   if (validateInput()) {
     const newMemberList = addMember();
     localStorage.setItem("membersData", JSON.stringify(newMemberList));
-    closeModal();
-    initializeModalValue();
     renderMemberList(newMemberList);
+    closeModal();
   } else {
     alert("모든 값을 입력하세요.");
   }

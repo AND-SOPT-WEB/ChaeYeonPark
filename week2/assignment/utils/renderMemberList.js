@@ -1,5 +1,11 @@
 import { setupCheckbox } from "./setupCheckbox.js";
 
+// 데이터 렌더링
+export const membersData = () => {
+  return JSON.parse(localStorage.getItem("membersData"));
+};
+
+// 멤버 리스트 렌더링
 export const renderMemberList = (data) => {
   const memberList = document.querySelector(".table-body");
   memberList.textContent = "";

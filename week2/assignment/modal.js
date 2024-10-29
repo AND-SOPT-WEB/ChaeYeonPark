@@ -6,18 +6,19 @@ const addMemberModal = document.querySelector(".add-member-modal");
 const closeModalBtn = document.querySelector(".modal-close-button");
 
 export const openModal = () => {
+  initializeModalValue();
   addMemberModal.showModal();
 };
 
 export const closeModal = () => {
   addMemberModal.close();
+  initializeModalValue();
 };
 
 export const setupModal = () => {
   openModalBtn.addEventListener("click", openModal);
   closeModalBtn.addEventListener("click", () => {
     closeModal();
-    initializeModalValue();
   });
 
   // 모달 백드롭

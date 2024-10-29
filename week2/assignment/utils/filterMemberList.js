@@ -1,3 +1,5 @@
+import { membersData } from "./renderMemberList.js";
+
 const filterInputName = document.querySelector(".filter-input-name");
 const filterInputEngName = document.querySelector(".filter-input-engname");
 const filterInputGithub = document.querySelector(".filter-input-github");
@@ -6,8 +8,9 @@ const filterInputRole = document.querySelector(".filter-input-role");
 const filterInputWeek1 = document.querySelector(".filter-input-week1");
 const filterInputWeek2 = document.querySelector(".filter-input-week2");
 
-export const filterMemberList = (membersData) => {
-  const filteredMemberList = membersData.filter((member) => {
+export const filterMemberList = () => {
+  const prevMemberList = membersData();
+  const filteredMemberList = prevMemberList.filter((member) => {
     const {
       name,
       englishName,
