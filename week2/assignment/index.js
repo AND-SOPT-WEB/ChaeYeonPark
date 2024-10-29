@@ -20,7 +20,13 @@ const renderMemberList = (data) => {
                     <td><input type="checkbox" class="filter-checkbox" /></td>
                     <td>${member.name}</td>
                     <td>${member.englishName}</td>
-                    <td>${member.github}</td>
+                    <td>
+                      <a 
+                        href="https://github.com/${member.github}"
+                        target="_blank">
+                        ${member.github} 
+                      </a>
+                    </td>
                     <td>${member.gender === "male" ? "남자" : "여자"}</td>
                     <td>${member.role}</td>
                     <td>${member.firstWeekGroup}</td>
@@ -164,6 +170,20 @@ openModalBtn.addEventListener("click", () => {
 closeModalBtn.addEventListener("click", () => {
   addMemberModal.close();
   resetModalValue();
+});
+
+// 모달 백드롭
+addMemberModal.addEventListener("click", (event) => {
+  const target = event.target;
+  const rect = target.getBoundingClientRect();
+  if (
+    rect.left > event.clientX ||
+    rect.right < event.clientX ||
+    rect.top > event.clientY ||
+    rect.bottom < event.clientY
+  ) {
+    addMemberModal.close();
+  }
 });
 
 const addMemberBtn = document.querySelector(".add-member-button");
