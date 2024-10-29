@@ -1,7 +1,7 @@
 import { setupCheckbox } from "./setupCheckbox.js";
 
 // 데이터 렌더링
-export const membersData = () => {
+export const getLocalStorageMembersData = () => {
   return JSON.parse(localStorage.getItem("membersData"));
 };
 

@@ -1,4 +1,4 @@
-import { membersData } from "./renderMemberList.js";
+import { getLocalStorageMembersData } from "./renderMemberList.js";
 
 const filterInputName = document.querySelector(".filter-input-name");
 const filterInputEngName = document.querySelector(".filter-input-engname");
@@ -9,7 +9,7 @@ const filterInputWeek1 = document.querySelector(".filter-input-week1");
 const filterInputWeek2 = document.querySelector(".filter-input-week2");
 
 export const filterMemberList = () => {
-  const prevMemberList = membersData();
+  const prevMemberList = getLocalStorageMembersData();
   const filteredMemberList = prevMemberList.filter((member) => {
     const {
       name,

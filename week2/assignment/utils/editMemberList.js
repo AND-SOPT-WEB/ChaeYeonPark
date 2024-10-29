@@ -1,9 +1,9 @@
-import { membersData } from "./renderMemberList.js";
+import { getLocalStorageMembersData } from "./renderMemberList.js";
 
 // 멤버 삭제
 export const deleteMember = () => {
   const deleteMemberIds = [];
-  const prevMemberList = membersData();
+  const prevMemberList = getLocalStorageMembersData();
   const filterCheckboxAll = document.querySelectorAll(".filter-checkbox");
 
   // checed된 요소들의 id 담기
@@ -43,7 +43,7 @@ export const validateInput = () => {
 };
 
 export const addMember = () => {
-  const prevMemberList = membersData();
+  const prevMemberList = getLocalStorageMembersData();
 
   const newMember = {
     id: prevMemberList.length + 1,

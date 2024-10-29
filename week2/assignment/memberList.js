@@ -3,7 +3,7 @@ import {
   addMember,
   validateInput,
 } from "./utils/editMemberList.js";
-import { membersData, renderMemberList } from "./utils/renderMemberList.js";
+import { getLocalStorageMembersData, renderMemberList } from "./utils/renderMemberList.js";
 import {
   initializeFilterValue,
   initializeCheckbox,
@@ -18,7 +18,7 @@ if (!localStorage.getItem("membersData")) {
   localStorage.setItem("membersData", JSON.stringify(members));
 }
 
-renderMemberList(membersData());
+renderMemberList(getLocalStorageMembersData());
 setupCheckbox();
 setupModal();
 
@@ -32,7 +32,7 @@ filterSearchBtn.addEventListener("click", () => {
 const filterResetBtn = document.querySelector(".filter-reset-button");
 filterResetBtn.addEventListener("click", () => {
   initializeFilterValue();
-  renderMemberList(membersData());
+  renderMemberList(getLocalStorageMembersData());
 });
 
 // 멤버 삭제
