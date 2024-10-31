@@ -1,14 +1,32 @@
 import styled from "@emotion/styled";
 import theme from "../styles/theme";
+import { useState } from "react";
 
-const Header = () => {
+const Header = ({ handleChangeContent }) => {
+  const [buttonState, setButtonState] = useState("GAME");
+
+  const handleClickButton = (content) => {
+    handleChangeContent(content);
+    setButtonState(content);
+  };
+
   return (
     <HeaderLayout>
       <HeaderContainer>
         <TitleStyle>1 to 50</TitleStyle>
         <ButtonWrapper>
-          <ButtonStyle>게임</ButtonStyle>
-          <ButtonStyle>랭킹</ButtonStyle>
+          <GameButtonStyle
+            buttonState={buttonState}
+            onClick={() => handleClickButton("GAME")}
+          >
+            게임
+          </GameButtonStyle>
+          <RankingButtonStyle
+            buttonState={buttonState}
+            onClick={() => handleClickButton("RANKING")}
+          >
+            랭킹
+          </RankingButtonStyle>
         </ButtonWrapper>
       </HeaderContainer>
 
@@ -52,11 +70,22 @@ const ButtonWrapper = styled.div`
   gap: 0.5rem;
 `;
 
-const ButtonStyle = styled.button`
-  ${theme.font.subHead}
+const GameButtonStyle = styled.button`
+  ${theme.font.subHead};
   padding: 0.5rem 1rem;
   color: ${theme.color.white};
-  background-color: ${theme.color.purple3};
+  background-color: ${({ buttonState }) =>
+    buttonState === "GAME" ? theme.color.purple3 : theme.color.purple5};
+  border: none;
+  border-radius: 5px;
+`;
+
+const RankingButtonStyle = styled.button`
+  ${theme.font.subHead};
+  padding: 0.5rem 1rem;
+  color: ${theme.color.white};
+  background-color: ${({ buttonState }) =>
+    buttonState === "RANKING" ? theme.color.purple3 : theme.color.purple5};
   border: none;
   border-radius: 5px;
 `;
