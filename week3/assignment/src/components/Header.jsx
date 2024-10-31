@@ -20,7 +20,7 @@ const Header = () => {
             <option>Level 3</option>
           </SelectStyle>
         </SelectWrapper>
-        <span>타이머자리</span>
+        <TimerStyle>타이머자리</TimerStyle>
       </HeaderContainer>
     </HeaderLayout>
   );
@@ -69,4 +69,9 @@ const SelectWrapper = styled.div`
 
 const SelectStyle = styled.select`
   border: none;
+`;
+
+const TimerStyle = styled.span`
+  ${theme.font.subHead}
+  color: ${theme.color.white};
 `;
