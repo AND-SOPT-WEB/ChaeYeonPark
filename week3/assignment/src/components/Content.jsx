@@ -1,4 +1,4 @@
-import Header from "./header";
+import Header from "./Header";
 import NumberGame from "./NumberGame";
 import styled from "@emotion/styled";
 import Ranking from "./Ranking";
