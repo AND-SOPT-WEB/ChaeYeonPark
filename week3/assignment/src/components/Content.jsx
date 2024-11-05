@@ -53,6 +53,11 @@ const Content = () => {
     localStorage.setItem("ranking", JSON.stringify(updateGameRanking));
   };
 
+  const handleResetLocalStorage = () => {
+    setGameRanking([]);
+    localStorage.setItem("ranking", []);
+  };
+
   return (
     <ContentLayout>
       <Header
@@ -68,7 +73,10 @@ const Content = () => {
           handleSetLocalStorage={handleSetLocalStorage}
         />
       ) : (
-        <Ranking gameRanking={gameRanking} />
+        <Ranking
+          gameRanking={gameRanking}
+          handleResetLocalStorage={handleResetLocalStorage}
+        />
       )}
     </ContentLayout>
   );

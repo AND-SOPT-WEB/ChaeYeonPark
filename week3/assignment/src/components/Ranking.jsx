@@ -1,12 +1,22 @@
 import styled from "@emotion/styled";
 import theme from "../styles/theme";
 
-const Ranking = ({ gameRanking }) => {
+const Ranking = ({ gameRanking, handleResetLocalStorage }) => {
+
+  const convertPlayToSeconds = (play) => {
+    const parts = play.split(':');
+    const seconds = parts.length === 2 ? parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10) : parseInt(parts[0], 10);
+    return seconds;
+  };
+
+
   return (
     <RankingLayout>
       <RankingHeaderWrapper>
         <RankingTitleStyle>랭킹</RankingTitleStyle>
-        <RankingResetButtonStyle>초기화</RankingResetButtonStyle>
+        <RankingResetButtonStyle onClick={handleResetLocalStorage}>
+          초기화
+        </RankingResetButtonStyle>
       </RankingHeaderWrapper>
 
       <RankingTableWrapper>
@@ -19,15 +29,17 @@ const Ranking = ({ gameRanking }) => {
         </thead>
 
         <tbody>
-          {gameRanking.map((rank) => {
-            return (
-              <tr>
-                <td>{rank.time}</td>
-                <td>{rank.level}</td>
-                <td>{rank.play}</td>
-              </tr>
-            );
-          })}
+          {gameRanking
+            .sort((a, b) => convertPlayToSeconds(a.play) - convertPlayToSeconds(b.play))
+            .map((rank, index) => {
+              return (
+                <tr key={index}>
+                  <td>{rank.time}</td>
+                  <td>{rank.level}</td>
+                  <td>{rank.play}</td>
+                </tr>
+              );
+            })}
         </tbody>
       </RankingTableWrapper>
     </RankingLayout>
