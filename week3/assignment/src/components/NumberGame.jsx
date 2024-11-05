@@ -1,12 +1,19 @@
+import { useState } from "react";
 import theme from "../styles/theme";
 import NumberBoard from "./NumberBoard";
 import styled from "@emotion/styled";
 
 const NumberGame = () => {
+  const [cardNumber, setCardNumber] = useState(1); // 카드 순서
+
+  const handleChangeCardNumber = () => {
+    setCardNumber((prev) => prev + 1);
+  };
+
   return (
     <NumberGameLayout>
-      <NumberBoardTextStyle> 다음 숫자: 1</NumberBoardTextStyle>
-      <NumberBoard />
+      <NumberBoardTextStyle> 다음 숫자: {cardNumber}</NumberBoardTextStyle>
+      <NumberBoard cardNumber={cardNumber} handleChangeCardNumber={handleChangeCardNumber}/>
     </NumberGameLayout>
   );
 };

@@ -1,11 +1,16 @@
 import styled from "@emotion/styled";
 import theme from "../styles/theme";
 
-const NumberCard = ({ cardNumber }) => {
+const NumberCard = ({ cardNumber, handleCardClick, isVisible }) => {
   return (
-    <NumberCardLayout>
-      <NumberCardTextStyle>{cardNumber}</NumberCardTextStyle>
-    </NumberCardLayout>
+    <>
+      <NumberCardLayout
+        onClick={() => handleCardClick(cardNumber)}
+        isVisible={isVisible}
+      >
+        <NumberCardTextStyle>{cardNumber}</NumberCardTextStyle>
+      </NumberCardLayout>
+    </>
   );
 };
 
@@ -18,6 +23,7 @@ const NumberCardLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: ${({ isVisible }) => (!isVisible ? "hidden" : "visible")};
 `;
 
 const NumberCardTextStyle = styled.span`
