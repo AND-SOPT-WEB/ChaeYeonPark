@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import theme from "../styles/theme";
 
-const Ranking = () => {
+const Ranking = ({ gameRanking }) => {
   return (
     <RankingLayout>
       <RankingHeaderWrapper>
@@ -19,21 +19,15 @@ const Ranking = () => {
         </thead>
 
         <tbody>
-          <tr>
-            <td>2024.10.25 오후 5:10:52</td>
-            <td>Level 1</td>
-            <td>713초</td>
-          </tr>
-          <tr>
-            <td>2024.10.25 오후 5:10:52</td>
-            <td>Level 1</td>
-            <td>713초</td>
-          </tr>
-          <tr>
-            <td>2024.10.25 오후 5:10:52</td>
-            <td>Level 1</td>
-            <td>713초</td>
-          </tr>
+          {gameRanking.map((rank) => {
+            return (
+              <tr>
+                <td>{rank.time}</td>
+                <td>{rank.level}</td>
+                <td>{rank.play}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </RankingTableWrapper>
     </RankingLayout>

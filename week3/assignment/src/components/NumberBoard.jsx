@@ -9,6 +9,7 @@ const NumberBoard = ({
   startTimer,
   resetTimer,
   time,
+  handleSetLocalStorage,
 }) => {
   // 숫자 배열을 만들어서 섞고 렌더링
   const [numberArray, setNumberArray] = useState(
@@ -29,14 +30,6 @@ const NumberBoard = ({
     true,
     true,
   ]);
-
-  if (!localStorage.getItem("ranking")) {
-    localStorage.setItem("ranking", JSON.stringify([]));
-  }
-
-  const [gameRanking, setGameRanking] = useState(
-    JSON.parse(localStorage.getItem("ranking"))
-  );
 
   const handleCardClick = (number) => {
     console.log(number);
@@ -65,22 +58,7 @@ const NumberBoard = ({
       resetTimer();
 
       // 로컬 스토리지 저장
-      const today = new Date();
-      const formattedDate = `${today.getFullYear()}년 ${
-        today.getMonth() + 1
-      }월 ${today.getDate()}일`;
-
-      const newRank = {
-        time: `${formattedDate}`,
-        level: "level 01",
-        play: `${time}`,
-      };
-
-      const updateGameRanking = [...gameRanking, newRank];
-      setGameRanking(updateGameRanking);
-
-      localStorage.setItem("ranking", JSON.stringify(updateGameRanking));
-
+      handleSetLocalStorage();
       alert(`게임 끝! 기록: ${formatTime(time)}초`);
 
       // 게임 초기화

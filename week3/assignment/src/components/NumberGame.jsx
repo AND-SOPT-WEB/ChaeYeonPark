@@ -3,7 +3,12 @@ import theme from "../styles/theme";
 import NumberBoard from "./NumberBoard";
 import styled from "@emotion/styled";
 
-const NumberGame = ({ startTimer, resetTimer, time }) => {
+const NumberGame = ({
+  startTimer,
+  resetTimer,
+  time,
+  handleSetLocalStorage,
+}) => {
   const [cardNumber, setCardNumber] = useState(1); // 카드 순서
 
   const handleChangeCardNumber = () => {
@@ -18,6 +23,7 @@ const NumberGame = ({ startTimer, resetTimer, time }) => {
         startTimer={startTimer}
         resetTimer={resetTimer}
         time={time}
+        handleSetLocalStorage={handleSetLocalStorage}
       />
     </NumberGameLayout>
   );
