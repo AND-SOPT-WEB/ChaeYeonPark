@@ -15,8 +15,9 @@ const NumberBoard = ({
   const [numberArray, setNumberArray] = useState(
     [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5)
   );
+
   // 클릭하면 다음 배열의 값이 나와야 돼! 근데 그것도 랜덤임
-  const [nextNumberArray] = useState(
+  const [nextNumberArray, setNextNumberArray] = useState(
     [10, 11, 12, 13, 14, 15, 16, 17, 18].sort(() => Math.random() - 0.5)
   );
   const [isVisible, setIsVisible] = useState([
@@ -60,8 +61,18 @@ const NumberBoard = ({
       // 로컬 스토리지 저장
       handleSetLocalStorage();
       alert(`게임 끝! 기록: ${formatTime(time)}초`);
+      console.log("게임 끝");
 
-      // 게임 초기화
+      // 게임 초기화 ?? 어케하지
+      setNumberArray(
+        [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5)
+      );
+
+      // 클릭하면 다음 배열의 값이 나와야 돼! 근데 그것도 랜덤임
+      setNextNumberArray(
+        [10, 11, 12, 13, 14, 15, 16, 17, 18].sort(() => Math.random() - 0.5)
+      );
+      setIsVisible([true, true, true, true, true, true, true, true, true]);
     }
   };
 
