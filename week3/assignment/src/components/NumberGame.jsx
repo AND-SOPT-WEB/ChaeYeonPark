@@ -11,8 +11,8 @@ const NumberGame = ({
 }) => {
   const [cardNumber, setCardNumber] = useState(1); // 카드 순서
 
-  const handleChangeCardNumber = () => {
-    setCardNumber((prev) => prev + 1);
+  const handleChangeCardNumber = (number) => {
+    setCardNumber(number);
   };
   return (
     <NumberGameLayout>

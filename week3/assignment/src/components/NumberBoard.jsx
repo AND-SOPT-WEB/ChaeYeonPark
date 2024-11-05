@@ -40,7 +40,7 @@ const NumberBoard = ({
     }
     // 딱 클릭했을 때, 이전 값과 비교 {}
     if (number === cardNumber) {
-      handleChangeCardNumber();
+      handleChangeCardNumber((prev) => prev + 1);
       const newNumberArray = [...numberArray];
       const updateIsVisible = [...isVisible];
       const index = newNumberArray.indexOf(number);
@@ -67,12 +67,11 @@ const NumberBoard = ({
       setNumberArray(
         [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5)
       );
-
-      // 클릭하면 다음 배열의 값이 나와야 돼! 근데 그것도 랜덤임
       setNextNumberArray(
         [10, 11, 12, 13, 14, 15, 16, 17, 18].sort(() => Math.random() - 0.5)
       );
       setIsVisible([true, true, true, true, true, true, true, true, true]);
+      handleChangeCardNumber(1);
     }
   };
 
