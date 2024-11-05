@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import theme from "../styles/theme";
 import { useState } from "react";
-import { formatTime } from "../utils/formatTime";
+import { formatTime } from "../utils/format";
 
 const Header = ({ handleChangeContent, content, time }) => {
   const [buttonState, setButtonState] = useState("GAME");
@@ -106,4 +106,5 @@ const SelectStyle = styled.select`
 const TimerStyle = styled.span`
   ${theme.font.subHead}
   color: ${theme.color.white};
+  width: 5rem;
 `;

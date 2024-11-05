@@ -1,15 +1,8 @@
 import styled from "@emotion/styled";
 import theme from "../styles/theme";
+import { formatRankingData } from "../utils/format";
 
 const Ranking = ({ gameRanking, handleResetLocalStorage }) => {
-
-  const convertPlayToSeconds = (play) => {
-    const parts = play.split(':');
-    const seconds = parts.length === 2 ? parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10) : parseInt(parts[0], 10);
-    return seconds;
-  };
-
-
   return (
     <RankingLayout>
       <RankingHeaderWrapper>
@@ -30,7 +23,9 @@ const Ranking = ({ gameRanking, handleResetLocalStorage }) => {
 
         <tbody>
           {gameRanking
-            .sort((a, b) => convertPlayToSeconds(a.play) - convertPlayToSeconds(b.play))
+            .sort(
+              (a, b) => formatRankingData(a.play) - formatRankingData(b.play)
+            )
             .map((rank, index) => {
               return (
                 <tr key={index}>
