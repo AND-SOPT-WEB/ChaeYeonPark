@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import theme from "../styles/theme";
 import { useState } from "react";
+import { formatTime } from "../utils/formatTime";
 
-const Header = ({ handleChangeContent }) => {
+const Header = ({ handleChangeContent, content, time }) => {
   const [buttonState, setButtonState] = useState("GAME");
 
   const handleClickButton = (content) => {
@@ -30,16 +31,18 @@ const Header = ({ handleChangeContent }) => {
         </ButtonWrapper>
       </HeaderContainer>
 
-      <HeaderContainer>
-        <SelectWrapper>
-          <SelectStyle>
-            <option>Level 1</option>
-            <option>Level 2</option>
-            <option>Level 3</option>
-          </SelectStyle>
-        </SelectWrapper>
-        <TimerStyle>타이머자리</TimerStyle>
-      </HeaderContainer>
+      {content === "GAME" && (
+        <HeaderContainer>
+          <SelectWrapper>
+            <SelectStyle>
+              <option>Level 1</option>
+              <option>Level 2</option>
+              <option>Level 3</option>
+            </SelectStyle>
+          </SelectWrapper>
+          <TimerStyle>{formatTime(time)}</TimerStyle>
+        </HeaderContainer>
+      )}
     </HeaderLayout>
   );
 };
