@@ -44,4 +44,12 @@ const theme = {
   },
 };
 
+export type ColorType = typeof theme.color;
+export type FontType = typeof theme.font;
+
+export interface ThemeType {
+  color: ColorType;
+  font: FontType;
+}
+
 export default theme;
