@@ -20,9 +20,7 @@ const MyPage = () => {
   };
 
   const handleClickLogout = () => {
-    // 로컬 > 토큰 지우고
     localStorage.removeItem("authToken");
-    // 로그인으로 이동
     navigate(routePath.LOGIN);
   };
 
