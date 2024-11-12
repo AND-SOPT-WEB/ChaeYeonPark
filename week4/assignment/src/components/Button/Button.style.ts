@@ -21,6 +21,10 @@ export const buttonColor = {
   authPage: (theme: Theme) => css`
     color: ${theme.color.white};
     background-color: ${theme.color.purple4};
+
+    :hover {
+      background-color: ${theme.color.purple1};
+    }
   `,
 
   myPage: (theme: Theme) => css`
@@ -32,4 +36,8 @@ export const buttonColor = {
 export const disabledStyle = (theme: Theme) => css`
   color: ${theme.color.midgray2};
   background-color: ${theme.color.lightgray1};
+
+  :hover {
+    background-color: ${theme.color.lightgray1};
+  }
 `;

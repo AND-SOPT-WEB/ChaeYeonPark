@@ -15,6 +15,7 @@ const Input = ({
   isError,
   errorMessage,
   maxLength = 8,
+  type,
 }: InputProps) => {
   const [isFocused, setIsFocused] = useState(false);
   const [ismaxLengthError, setIsMaxLengthError] = useState(false);
@@ -36,6 +37,7 @@ const Input = ({
         value={value}
         onChange={handleInputChange}
         placeholder={placeholder}
+        type={type}
         css={inputStyle}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
@@ -43,7 +45,9 @@ const Input = ({
       {isFocused && ismaxLengthError && (
         <span css={errorMessageStyle}>{maxLengthErrorMessage}</span>
       )}
-      {isFocused && isError && <span css={errorMessageStyle}> {errorMessage} </span>}
+      {isFocused && isError && (
+        <span css={errorMessageStyle}> {errorMessage} </span>
+      )}
     </div>
   );
 };
