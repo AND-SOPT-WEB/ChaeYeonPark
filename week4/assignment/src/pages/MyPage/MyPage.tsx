@@ -8,12 +8,22 @@ import {
   MyHeaderTitleWrapper,
   MyHeaderWrapper,
 } from "./MyPage.style";
+import { useNavigate } from "react-router-dom";
+import routePath from "../../routers/routePath";
 
 const MyPage = () => {
   const [content, setContent] = useState<"HOBBY" | "INFO">("HOBBY");
+  const navigate = useNavigate();
 
   const handleChangeContent = (content: "HOBBY" | "INFO") => {
     setContent(content);
+  };
+
+  const handleClickLogout = () => {
+    // 로컬 > 토큰 지우고
+    localStorage.removeItem("authToken");
+    // 로그인으로 이동
+    navigate(routePath.LOGIN);
   };
 
   return (
@@ -35,7 +45,9 @@ const MyPage = () => {
           </button>
         </div>
 
-        <h2 css={MyHeaderTextStyle}>로그아웃</h2>
+        <h2 css={MyHeaderTextStyle} onClick={handleClickLogout}>
+          로그아웃
+        </h2>
       </header>
 
       <div>

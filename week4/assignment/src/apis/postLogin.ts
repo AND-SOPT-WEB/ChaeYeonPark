@@ -9,8 +9,9 @@ const postLogin = async (username: string, password: string) => {
     });
 
     const token = response.data.result?.token;
+
     if (token) {
-      localStorage.setItem("authToken", token); 
+      localStorage.setItem("authToken", token);
       return token;
     }
 
@@ -23,11 +24,12 @@ const postLogin = async (username: string, password: string) => {
         errorMessage = "Network error";
       } else if (statusCode >= 500) {
         errorMessage = "Server error";
-      } else if (statusCode === 400 || statusCode === 404) {
-        errorMessage = "잘못된 요청";
+      } else if (statusCode === 400 || statusCode === 403) {
+        errorMessage = "잘못된 비밀번호 입니다.";
       }
 
       console.error(errorMessage);
+      alert(`${errorMessage}`);
       throw new Error(errorMessage);
     } else {
       console.error("Unknown Error:", error);
