@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import SignupHobby from "./components/SignupHobby";
 import SignupName from "./components/SignupName";
 import SignupPassword from "./components/SignupPassword";
-import routePath from "../../router/routePath";
+import routePath from "../../routers/routePath";
 import {
   signupLayout,
   signupLinkStyle,
@@ -29,7 +29,9 @@ const SignupPage = () => {
       {step === "HOBBY" && <SignupHobby />}
       <div css={signupLinkWrapper}>
         <span css={signupSpanStyle}>이미 회원이신가요?</span>
-        <Link to={routePath.LOGIN} css={signupLinkStyle}>로그인</Link>
+        <Link to={routePath.LOGIN} css={signupLinkStyle}>
+          로그인
+        </Link>
       </div>
     </div>
   );

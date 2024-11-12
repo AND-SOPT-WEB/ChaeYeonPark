@@ -2,8 +2,8 @@ import { Global, ThemeProvider } from "@emotion/react";
 import theme from "./styles/theme";
 import GlobalStyle from "./styles/global";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import authRoutes from "./router/authRoutes";
-import myPageRoutes from "./router/myPageRoutes";
+import authRoutes from "./routers/authRoutes";
+import myPageRoutes from "./routers/myPageRoutes";
 
 const App = () => {
   const router = createBrowserRouter([...authRoutes, ...myPageRoutes]);
