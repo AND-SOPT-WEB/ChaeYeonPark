@@ -1,19 +1,48 @@
-import Button from "../../components/Button/Button";
-import Input from "../../components/Input/Input";
+import { useState } from "react";
+import MyPageHobby from "./components/MyPageHobby";
+import MyPageInfo from "./components/MyPageInfo";
+import {
+  MyHeaderButtonStyle,
+  MyHeaderTextStyle,
+  MyHeaderTitleStyle,
+  MyHeaderTitleWrapper,
+  MyHeaderWrapper,
+} from "./MyPage.style";
 
 const MyPage = () => {
+  const [content, setContent] = useState<"HOBBY" | "INFO">("HOBBY");
+
+  const handleChangeContent = (content: "HOBBY" | "INFO") => {
+    setContent(content);
+  };
+
   return (
-    <div>
-      <Button variant="myPage">로그인</Button>
-      <Button variant="authPage">로그인</Button>
-      <Input
-        value=""
-        onChange={() => {}}
-        placeholder="입력하세요."
-        isError={true}
-        errorMessage="하하"
-      />
-    </div>
+    <>
+      <header css={MyHeaderWrapper}>
+        <div css={MyHeaderTitleWrapper}>
+          <h1 css={MyHeaderTitleStyle}>마이페이지</h1>
+          <button
+            css={MyHeaderButtonStyle}
+            onClick={() => handleChangeContent("HOBBY")}
+          >
+            취미
+          </button>
+          <button
+            css={MyHeaderButtonStyle}
+            onClick={() => handleChangeContent("INFO")}
+          >
+            내 정보
+          </button>
+        </div>
+
+        <h2 css={MyHeaderTextStyle}>로그아웃</h2>
+      </header>
+
+      <div>
+        {content === "HOBBY" && <MyPageHobby />}
+        {content === "INFO" && <MyPageInfo />}
+      </div>
+    </>
   );
 };
 
