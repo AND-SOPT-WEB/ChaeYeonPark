@@ -1,10 +1,10 @@
 const authPages = {
-  LOGIN: "/login",
+  LOGIN: "/",
   SIGNUP: "/signup",
 };
 
 const myPages = {
-  MYPAGE: "/",
+  MYPAGE: "/mypage",
 };
 
 export default {

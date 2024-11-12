@@ -7,6 +7,7 @@ import {
   MyContentLayout,
   MyContentTitleStyle,
 } from "../MyPage.style";
+import updateUser from "../../../apis/updateUser";
 
 const MyPageInfo = () => {
   const [value, setValue] = useState({
@@ -25,6 +26,16 @@ const MyPageInfo = () => {
     }));
   };
 
+  const handleClickButton = async () => {
+    try {
+      const response = await updateUser(value.PASSWORD, value.HOBBY);
+      console.log("User updated successfully:", response);
+      alert("프로필이 성공적으로 업데이트되었습니다.");
+    } catch (error) {
+      console.error("Update failed:", error);
+    }
+  };
+
   return (
     <div css={MyContentLayout}>
       <h1 css={MyContentTitleStyle}>내 정보 수정하기</h1>
@@ -41,7 +52,9 @@ const MyPageInfo = () => {
           onChange={(e) => handleInputChange(e, "HOBBY")}
         />
       </div>
-      <Button variant="myPage">수정하기</Button>
+      <Button variant="myPage" onClick={handleClickButton}>
+        수정하기
+      </Button>
     </div>
   );
 };
