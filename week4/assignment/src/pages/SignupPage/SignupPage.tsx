@@ -35,7 +35,7 @@ const SignupPage = () => {
     }));
   };
 
-  // 
+  //
 
   return (
     <div css={signupLayout}>
@@ -55,7 +55,11 @@ const SignupPage = () => {
         />
       )}
       {step === "HOBBY" && (
-        <SignupHobby handleInputChange={handleInputChange} value={value} />
+        <SignupHobby
+          handleChangeStep={handleChangeStep}
+          handleInputChange={handleInputChange}
+          value={value}
+        />
       )}
       <div css={signupLinkWrapper}>
         <span css={signupSpanStyle}>이미 회원이신가요?</span>

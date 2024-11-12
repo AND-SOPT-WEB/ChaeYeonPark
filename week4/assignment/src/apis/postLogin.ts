@@ -1,0 +1,39 @@
+import { isAxiosError } from "axios";
+import serverAxios from "./serverAxios";
+
+const postLogin = async (username: string, password: string) => {
+  try {
+    const response = await serverAxios.post("/login", {
+      username,
+      password,
+    });
+
+    const token = response.data.result?.token;
+    if (token) {
+      localStorage.setItem("authToken", token); 
+      return token;
+    }
+
+    throw new Error("Login failed: " + (response.data.code || "Unknown error"));
+  } catch (error) {
+    if (isAxiosError(error)) {
+      const statusCode = error.response?.status;
+      let errorMessage = "error occurred";
+      if (!statusCode) {
+        errorMessage = "Network error";
+      } else if (statusCode >= 500) {
+        errorMessage = "Server error";
+      } else if (statusCode === 400 || statusCode === 404) {
+        errorMessage = "잘못된 요청";
+      }
+
+      console.error(errorMessage);
+      throw new Error(errorMessage);
+    } else {
+      console.error("Unknown Error:", error);
+      throw new Error("Unknown error occurred");
+    }
+  }
+};
+
+export default postLogin;
