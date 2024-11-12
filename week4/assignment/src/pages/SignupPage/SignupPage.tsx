@@ -19,7 +19,6 @@ const SignupPage = () => {
     PASSWORD: "",
     HOBBY: "",
   });
-  const [isValid, setIsValid] = useState(false);
 
   const handleChangeStep = (step: "NAME" | "PASSWORD" | "HOBBY") => {
     setStep(step);
