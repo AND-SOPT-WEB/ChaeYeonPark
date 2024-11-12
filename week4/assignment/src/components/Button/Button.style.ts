@@ -6,7 +6,7 @@ export const buttonStyle = (theme: Theme) => css`
   align-items: center;
 
   width: 25rem;
-  height: 5rem;
+  height: 4.5rem;
   padding: 1rem;
 
   border: none;
