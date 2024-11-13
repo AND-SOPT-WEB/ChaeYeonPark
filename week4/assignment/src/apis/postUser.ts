@@ -1,35 +1,35 @@
 import { isAxiosError } from "axios";
 import serverAxios from "./serverAxios";
+import { SignupInfoType } from "../types/authType";
 
-export const postUser = async (value: any) => {
+export const postUser = async (signupInfo: SignupInfoType) => {
   try {
     const response = await serverAxios.post("/user", {
-      username: value.NAME,
-      password: value.PASSWORD,
-      hobby: value.HOBBY,
+      username: signupInfo.username,
+      password: signupInfo.password,
+      hobby: signupInfo.hobby,
     });
-    console.log(response);
-    return response.data;
+    return response.data.result;
   } catch (error) {
     if (isAxiosError(error)) {
       const statusCode = error.response?.status;
-      let errorMessage = "error occurred";
-      console.log("Axios Error - Status Code:", statusCode);
+      let errorMessage = "에러가 발생했습니다.";
+
       if (!statusCode) {
-        errorMessage = "Network error";
+        errorMessage = "네트워크 에러입니다.";
       } else if (statusCode >= 500) {
-        errorMessage = "Server error";
-      } else if (statusCode === 400 || statusCode === 404) {
-        errorMessage = "잘못된 요청";
-        alert("중복된 닉네임 입니다.");
-      } else if (statusCode === 409) {
-        alert("중복된 닉네임 입니다.");
+        errorMessage = "서버 내부 에러입니다.";
+      } else if (
+        statusCode === 400 ||
+        statusCode === 404 ||
+        statusCode === 409
+      ) {
+        errorMessage = "중복된 닉네임 입니다.";
       }
 
       throw new Error(errorMessage);
     } else {
-      console.error("Unknown Error:", error);
-      throw new Error("unknown error");
+      throw new Error("담당자에게 문의하세요.");
     }
   }
 };

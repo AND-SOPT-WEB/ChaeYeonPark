@@ -10,24 +10,26 @@ const SignupHobby = ({
   signupInfo,
   handleChangeSignupInfo,
   handleChangeSignupStep,
+  handleResetInput,
 }: SignupInfoProps) => {
   const navigate = useNavigate();
 
-  // 에러 핸들링 수정
   const handleClickSignupButton = async () => {
     try {
-      const res = await postUser(signupInfo);
-      if (res) {
-        alert(`회원가입 성공! 회원번호 : ${res.result.no}`);
+      const response = await postUser(signupInfo);
+      if (response) {
+        alert(`회원가입 성공! 회원번호 : ${response.no}`);
         navigate(routePath.LOGIN);
       }
-    } catch {
+    } catch (error) {
+      alert(`${error}`);
       handleChangeSignupStep("username");
-      // 빈칸 초기화 되도록 추가
+      handleResetInput?.();
     }
   };
 
-  const isHobbyValidLength = signupInfo.hobby.length < 1 || signupInfo.hobby.length > 8
+  const isHobbyValidLength =
+    signupInfo.hobby.length < 1 || signupInfo.hobby.length > 8;
 
   return (
     <div css={signupInputWrapper}>

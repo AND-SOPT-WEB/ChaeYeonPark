@@ -20,4 +20,5 @@ export interface SignupInfoProps {
     key: SignupInfo
   ) => void;
   handleChangeSignupStep: (step: SignupInfo) => void;
+  handleResetInput?: () => void;
 }
