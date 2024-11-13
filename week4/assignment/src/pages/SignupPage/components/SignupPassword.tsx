@@ -2,23 +2,31 @@ import { useState } from "react";
 import Button from "../../../components/Button/Button";
 import Input from "../../../components/Input/Input";
 import { signupInputWrapper, signupLabelStyle } from "../SignupPage.style";
+import { SignupInfoProps } from "../../../types/authType";
 
-const SignupPassword = ({ handleChangeStep, handleInputChange, value }) => {
+const SignupPassword = ({
+  signupInfo,
+  handleChangeSignupInfo,
+  handleChangeSignupStep,
+}: SignupInfoProps) => {
   const [passwordCheck, setPassWordCheck] = useState("");
+
   const handleChangePasswordCheck = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPassWordCheck(e.target.value);
   };
 
-  const isValid = value.PASSWORD === passwordCheck;
+  const isPasswordMatch = signupInfo.password === passwordCheck;
+  const isPasswordValidLength =
+    signupInfo.password.length < 1 || signupInfo.password.length > 8;
 
   return (
     <div css={signupInputWrapper}>
       <span css={signupLabelStyle}>비밀번호</span>
       <Input
-        value={value.PASSWORD}
-        onChange={(e) => handleInputChange(e, "PASSWORD")}
+        value={signupInfo.password}
+        onChange={(e) => handleChangeSignupInfo(e, "password")}
         placeholder="비밀번호를 입력해주세요"
         type="password"
       />
@@ -27,15 +35,13 @@ const SignupPassword = ({ handleChangeStep, handleInputChange, value }) => {
         onChange={(e) => handleChangePasswordCheck(e)}
         placeholder="비밀번호 확인"
         type="password"
-        errorMessage="비밀번호가 다릅니다."
-        isError={!isValid}
+        errorMessage="비밀번호가 일치하지 않습니다."
+        isError={!isPasswordMatch}
       />
       <Button
         variant="authPage"
-        onClick={() => handleChangeStep("HOBBY")}
-        disabled={
-          !isValid || value.PASSWORD.length < 1 || value.PASSWORD.length > 8
-        }
+        onClick={() => handleChangeSignupStep("hobby")}
+        disabled={!isPasswordMatch || isPasswordValidLength}
       >
         다음
       </Button>

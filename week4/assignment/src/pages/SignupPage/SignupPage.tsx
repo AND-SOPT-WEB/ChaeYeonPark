@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import SignupHobby from "./components/SignupHobby";
 import SignupName from "./components/SignupName";
@@ -10,55 +11,54 @@ import {
   signupSpanStyle,
   signupTitleStyle,
 } from "./SignupPage.style";
-import { useState } from "react";
+import { SignupInfo } from "../../types/authType";
+
 
 const SignupPage = () => {
-  const [step, setStep] = useState<"NAME" | "PASSWORD" | "HOBBY">("NAME");
-  const [value, setValue] = useState({
-    NAME: "",
-    PASSWORD: "",
-    HOBBY: "",
+  const [signupStep, setSignupStep] = useState<SignupInfo>("name");
+  const [signupInfo, setSignupInfo] = useState({
+    username: "",
+    password: "",
+    hobby: "",
   });
 
-  const handleChangeStep = (step: "NAME" | "PASSWORD" | "HOBBY") => {
-    setStep(step);
+  const handleChangeSignupStep = (step: SignupInfo) => {
+    setSignupStep(step);
   };
 
-  const handleInputChange = (
+  const handleChangeSignupInfo = (
     e: React.ChangeEvent<HTMLInputElement>,
-    key: "NAME" | "PASSWORD" | "HOBBY"
+    key: SignupInfo
   ) => {
     const value = e.target.value;
-    setValue((prevState) => ({
+    setSignupInfo((prevState) => ({
       ...prevState,
       [key]: value,
     }));
   };
 
-  //
-
   return (
     <div css={signupLayout}>
       <h1 css={signupTitleStyle}>회원가입</h1>
-      {step === "NAME" && (
+      {signupStep === "username" && (
         <SignupName
-          handleChangeStep={handleChangeStep}
-          handleInputChange={handleInputChange}
-          value={value}
+          signupInfo={signupInfo}
+          handleChangeSignupInfo={handleChangeSignupInfo}
+          handleChangeSignupStep={handleChangeSignupStep}
         />
       )}
-      {step === "PASSWORD" && (
+      {signupStep === "password" && (
         <SignupPassword
-          handleChangeStep={handleChangeStep}
-          handleInputChange={handleInputChange}
-          value={value}
+          signupInfo={signupInfo}
+          handleChangeSignupInfo={handleChangeSignupInfo}
+          handleChangeSignupStep={handleChangeSignupStep}
         />
       )}
-      {step === "HOBBY" && (
+      {signupStep === "hobby" && (
         <SignupHobby
-          handleChangeStep={handleChangeStep}
-          handleInputChange={handleInputChange}
-          value={value}
+          signupInfo={signupInfo}
+          handleChangeSignupInfo={handleChangeSignupInfo}
+          handleChangeSignupStep={handleChangeSignupStep}
         />
       )}
       <div css={signupLinkWrapper}>

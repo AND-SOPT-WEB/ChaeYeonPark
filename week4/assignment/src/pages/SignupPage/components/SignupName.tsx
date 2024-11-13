@@ -1,20 +1,28 @@
 import Button from "../../../components/Button/Button";
 import Input from "../../../components/Input/Input";
+import { SignupInfoProps } from "../../../types/authType";
 import { signupInputWrapper, signupLabelStyle } from "../SignupPage.style";
 
-const SignupName = ({ handleChangeStep, handleInputChange, value }) => {
+const SignupName = ({
+  signupInfo,
+  handleChangeSignupInfo,
+  handleChangeSignupStep,
+}: SignupInfoProps) => {
+  const isNameValidLength =
+    signupInfo.username.length < 1 || signupInfo.username.length > 8;
+
   return (
     <div css={signupInputWrapper}>
       <span css={signupLabelStyle}>이름</span>
       <Input
-        value={value.NAME}
-        onChange={(e) => handleInputChange(e, "NAME")}
+        value={signupInfo.username}
+        onChange={(e) => handleChangeSignupInfo(e, "username")}
         placeholder="사용자 이름을 입력해주세요"
       />
       <Button
         variant="authPage"
-        onClick={() => handleChangeStep("PASSWORD")}
-        disabled={value.NAME.length < 1 || value.NAME.length > 8}
+        onClick={() => handleChangeSignupStep("password")}
+        disabled={isNameValidLength}
       >
         다음
       </Button>

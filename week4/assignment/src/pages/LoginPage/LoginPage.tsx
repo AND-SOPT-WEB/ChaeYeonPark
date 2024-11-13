@@ -10,7 +10,7 @@ import {
   loginTitleStyle,
 } from "./LoginPage.style";
 import postLogin from "../../apis/postLogin";
-import { LoginInfoType } from "../../types/authType";
+import { LoginInfo, LoginInfoType } from "../../types/authType";
 
 const LoginPage = () => {
   const [loginInfo, setLoginInfo] = useState({
@@ -22,7 +22,7 @@ const LoginPage = () => {
 
   const handleChangeLoginInfo = (
     e: React.ChangeEvent<HTMLInputElement>,
-    key: "username" | "password"
+    key: LoginInfo
   ) => {
     const value = e.target.value;
     setLoginInfo((prevState) => ({
