@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
@@ -8,28 +9,35 @@ import {
   loginLinkStyle,
   loginTitleStyle,
 } from "./LoginPage.style";
-import { useState } from "react";
 import postLogin from "../../apis/postLogin";
+import { LoginInfoType } from "../../types/authType";
 
 const LoginPage = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginInfo, setLoginInfo] = useState({
+    username: "",
+    password: "",
+  });
+
   const navigate = useNavigate();
 
-  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
+  const handleChangeLoginInfo = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: "username" | "password"
+  ) => {
+    const value = e.target.value;
+    setLoginInfo((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
   };
 
-  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleLogin = async (username: string, password: string) => {
+  const handleClickLoginButton = async (loginInfo: LoginInfoType) => {
     try {
-      const token = await postLogin(username, password);
+      const token = await postLogin(loginInfo);
+      localStorage.setItem("authToken", token); // 로컬스토리지에 토큰 저장
       navigate(routePath.MYPAGE);
     } catch (error) {
-      console.error("Login failed:", error);
+      alert(`${error}`);
     }
   };
 
@@ -38,18 +46,18 @@ const LoginPage = () => {
       <h1 css={loginTitleStyle}>로그인</h1>
       <div css={loginInputWrapper}>
         <Input
-          value={username}
-          onChange={(e) => handleChangeInput(e)}
+          value={loginInfo.username}
+          onChange={(e) => handleChangeLoginInfo(e, "username")}
           placeholder="아이디"
         />
         <Input
-          value={password}
-          onChange={(e) => handleChangePassword(e)}
+          value={loginInfo.password}
+          onChange={(e) => handleChangeLoginInfo(e, "password")}
           placeholder="비밀번호"
         />
         <Button
           variant="authPage"
-          onClick={() => handleLogin(username, password)}
+          onClick={() => handleClickLoginButton(loginInfo)}
         >
           로그인
         </Button>

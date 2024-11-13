@@ -1,17 +1,17 @@
 import { isAxiosError } from "axios";
 import serverAxios from "./serverAxios";
+import { LoginInfoType } from "../types/authType";
 
-const postLogin = async (username: string, password: string) => {
+const postLogin = async (loginInfo: LoginInfoType) => {
   try {
     const response = await serverAxios.post("/login", {
-      username,
-      password,
+      username: loginInfo.username,
+      password: loginInfo.password,
     });
 
     const token = response.data.result?.token;
 
     if (token) {
-      localStorage.setItem("authToken", token);
       return token;
     }
 
@@ -19,21 +19,18 @@ const postLogin = async (username: string, password: string) => {
   } catch (error) {
     if (isAxiosError(error)) {
       const statusCode = error.response?.status;
-      let errorMessage = "error occurred";
-      if (!statusCode) {
-        errorMessage = "Network error";
-      } else if (statusCode >= 500) {
-        errorMessage = "Server error";
-      } else if (statusCode === 400 || statusCode === 403) {
-        errorMessage = "잘못된 비밀번호 입니다.";
-      }
+      let errorMessage = "에러입니다.";
 
-      console.error(errorMessage);
-      alert(`${errorMessage}`);
+      if (!statusCode) {
+        errorMessage = "네트워크 에러입니다.";
+      } else if (statusCode >= 500) {
+        errorMessage = "서버 내부 에러입니다.";
+      } else if (statusCode === 400 || statusCode === 403) {
+        errorMessage = "잘못된 아이디/비밀번호 입니다.";
+      }
       throw new Error(errorMessage);
     } else {
-      console.error("Unknown Error:", error);
-      throw new Error("Unknown error occurred");
+      throw new Error("담당자에게 문의하세요.");
     }
   }
 };
