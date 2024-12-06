@@ -12,30 +12,36 @@ import getUserHobby from "../../../apis/getUserHobby";
 import getUserHobbyByNo from "../../../apis/getUserHobbyByNo";
 
 const MyPageHobby = () => {
-  const [userHobby, setUserHobby] = useState();
+  const [userHobby, setUserHobby] = useState("");
   const [userNumber, setUserNumber] = useState("");
   const [otherUserHobby, setOtherUserHobby] = useState("");
 
   useEffect(() => {
     const fetchUserHobby = async () => {
       try {
-        const hobbyData = await getUserHobby();
-        setUserHobby(hobbyData || "No hobby found");
+        const userHobbyData = await getUserHobby();
+        setUserHobby(userHobbyData || "취미를 불러올 수 없습니다.");
       } catch (error) {
-        console.error("Failed to retrieve hobby:", error);
+        setUserHobby(`${error}`);
       }
     };
 
     fetchUserHobby();
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlChangeUserNumberInput = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setUserNumber(e.target.value);
   };
 
-  const handleClickButton = async (userNumber: number) => {
-    const otherHobbyData = await getUserHobbyByNo(userNumber);
-    setOtherUserHobby(otherHobbyData);
+  const handleClickSearchButton = async (userNumber: string) => {
+    try {
+      const otherUserHobbyData = await getUserHobbyByNo(Number(userNumber));
+      setOtherUserHobby(otherUserHobbyData);
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -48,12 +54,15 @@ const MyPageHobby = () => {
         <h2 css={MyContentLabelStyle}>다른 사람들의 취미</h2>
         <Input
           value={userNumber}
-          onChange={(e) => handleInputChange(e)}
+          onChange={(e) => handlChangeUserNumberInput(e)}
           placeholder="사용자 번호"
         />
       </div>
 
-      <Button variant="myPage" onClick={() => handleClickButton(userNumber)}>
+      <Button
+        variant="myPage"
+        onClick={() => handleClickSearchButton(userNumber)}
+      >
         검색
       </Button>
 

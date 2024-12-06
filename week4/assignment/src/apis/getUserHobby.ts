@@ -4,10 +4,6 @@ import serverAxios from "./serverAxios";
 const getUserHobby = async () => {
   try {
     const token = localStorage.getItem("authToken");
-    if (!token) {
-      throw new Error("No auth token found. Please log in.");
-    }
-
     const response = await serverAxios.get("/user/my-hobby", {
       headers: {
         token: `${token}`,
@@ -18,23 +14,23 @@ const getUserHobby = async () => {
   } catch (error) {
     if (isAxiosError(error)) {
       const statusCode = error.response?.status;
-      let errorMessage = "error occurred";
+      let errorMessage = "에러가 발생했습니다.";
 
       if (!statusCode) {
-        errorMessage = "Network error";
+        errorMessage = "네트워크 에러입니다.";
       } else if (statusCode >= 500) {
-        errorMessage = "Server error";
-      } else if (statusCode === 400 || statusCode === 404) {
-        errorMessage = "잘못된 요청";
-      } else if (error.response?.data.code === "00") {
-        errorMessage = "Failed to retrieve hobby information";
+        errorMessage = "서버 내부 에러입니다.";
+      } else if (
+        statusCode === 401 ||
+        statusCode === 403 ||
+        statusCode === 404
+      ) {
+        errorMessage = "잘못된 요청입니다.";
       }
 
-      console.error(errorMessage);
       throw new Error(errorMessage);
     } else {
-      console.error("Unknown Error:", error);
-      throw new Error("Unknown error occurred");
+      throw new Error("담당자에게 문의하세요.");
     }
   }
 };

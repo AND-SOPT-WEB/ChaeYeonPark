@@ -54,6 +54,7 @@ const LoginPage = () => {
           value={loginInfo.password}
           onChange={(e) => handleChangeLoginInfo(e, "password")}
           placeholder="비밀번호"
+          type="password"
         />
         <Button
           variant="authPage"
