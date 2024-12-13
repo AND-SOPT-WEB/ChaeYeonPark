@@ -37,3 +37,13 @@ export const signupLinkStyle = (theme: Theme) => css`
   ${theme.font.body}
   color: ${theme.color.purple3};
 `;
+
+export const passwordInputWrapper = css`
+  position: relative;
+`;
+
+export const showPasswordButton = () => css`
+  position: absolute;
+  right: 1rem;
+  top: 1.2rem;
+`;

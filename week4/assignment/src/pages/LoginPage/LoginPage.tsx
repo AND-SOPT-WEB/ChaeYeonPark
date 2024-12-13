@@ -32,12 +32,18 @@ const LoginPage = () => {
   };
 
   const handleClickLoginButton = async (loginInfo: LoginInfoType) => {
-    try {
-      const token = await postLogin(loginInfo);
-      localStorage.setItem("authToken", token); // 로컬스토리지에 토큰 저장
-      navigate(routePath.MYPAGE);
-    } catch (error) {
-      alert(`${error}`);
+    if (loginInfo.username === "") {
+      alert("아이디를 입력해주세요.");
+    } else if (loginInfo.password === "") {
+      alert("비밀번호를 입력해주세요.");
+    } else {
+      try {
+        const token = await postLogin(loginInfo);
+        localStorage.setItem("authToken", token); // 로컬스토리지에 토큰 저장
+        navigate(routePath.MYPAGE);
+      } catch (error) {
+        alert(`${error}`);
+      }
     }
   };
 

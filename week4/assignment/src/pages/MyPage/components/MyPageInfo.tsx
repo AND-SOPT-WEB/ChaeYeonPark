@@ -60,12 +60,12 @@ const MyPageInfo = () => {
         />
 
         <span css={MyContentLabelStyle}> 새 취미</span>
-        <Input value={hobby} onChange={(e) => handleChangeHobbyInput(e)} />
+        <Input
+          value={hobby}
+          onChange={(e) => handleChangeHobbyInput(e)}
+        />
       </div>
-      <Button
-        variant="myPage"
-        onClick={handleClickEditButton}
-      >
+      <Button variant="myPage" onClick={handleClickEditButton}>
         수정하기
       </Button>
     </div>

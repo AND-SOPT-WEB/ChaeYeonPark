@@ -14,21 +14,16 @@ const Input = ({
   placeholder,
   isError,
   errorMessage,
-  maxLength = 8,
   type,
 }: InputProps) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [ismaxLengthError, setIsMaxLengthError] = useState(false);
-  const maxLengthErrorMessage = `${maxLength}자 이하로 입력해주세요.`;
+  const maxLengthErrorMessage = "8자 이하로 입력해주세요.";
+
+  const isValidMaxLength = value.length < 1 || value.length > 8;
 
   // 글자 수 세서 바로 화면에 반영하는 onChange + 외부 onChange
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length <= maxLength) {
-      onChange(e);
-      setIsMaxLengthError(false);
-    } else {
-      setIsMaxLengthError(true);
-    }
+    onChange(e);
   };
 
   return (
@@ -42,11 +37,10 @@ const Input = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       />
-      {isFocused && ismaxLengthError && (
-        <span css={errorMessageStyle}>{maxLengthErrorMessage}</span>
-      )}
-      {isFocused && isError && (
-        <span css={errorMessageStyle}> {errorMessage} </span>
+      {isFocused && (isValidMaxLength || isError) && (
+        <span css={errorMessageStyle}>
+          {isValidMaxLength ? maxLengthErrorMessage : errorMessage}{" "}
+        </span>
       )}
     </div>
   );
