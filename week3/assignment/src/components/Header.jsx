@@ -3,7 +3,7 @@ import theme from "../styles/theme";
 import { useState } from "react";
 import { formatTime } from "../utils/format";
 
-const Header = ({ handleChangeContent, content, time }) => {
+const Header = ({ handleChangeContent, content, time, handleChangeLevel }) => {
   const [buttonState, setButtonState] = useState("GAME");
 
   const handleClickButton = (content) => {
@@ -34,10 +34,12 @@ const Header = ({ handleChangeContent, content, time }) => {
       {content === "GAME" && (
         <HeaderContainer>
           <SelectWrapper>
-            <SelectStyle>
-              <option>Level 1</option>
-              <option>Level 2</option>
-              <option>Level 3</option>
+            <SelectStyle
+              onChange={(e) => handleChangeLevel(Number(e.target.value))}
+            >
+              <option value={1}>Level 1</option>
+              <option value={2}>Level 2</option>
+              <option value={3}>Level 3</option>
             </SelectStyle>
           </SelectWrapper>
           <TimerStyle>{formatTime(time)}</TimerStyle>

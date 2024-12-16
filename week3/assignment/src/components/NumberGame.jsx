@@ -1,35 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import theme from "../styles/theme";
 import NumberCard from "./NumberCard";
 import styled from "@emotion/styled";
 import { formatTime } from "../utils/format";
 import { createRandomArray } from "../utils/createRandomArray";
+import { LEVEL } from "../constants/level";
 
 const NumberGame = ({
   startTimer,
   resetTimer,
   time,
   handleSetLocalStorage,
+  level,
 }) => {
   const [cardNumber, setCardNumber] = useState(1);
-  const [numberArray, setNumberArray] = useState(createRandomArray(1, 9));
-  const [nextNumberArray, setNextNumberArray] = useState(
-    createRandomArray(10, 18)
+  const [numberArray, setNumberArray] = useState(
+    createRandomArray(LEVEL[level].MinNumber, LEVEL[level].MaxNumber)
   );
-  const [isVisible, setIsVisible] = useState(Array(9).fill(true));
+  const [nextNumberArray, setNextNumberArray] = useState(
+    createRandomArray(LEVEL[level].MinNextNumber, LEVEL[level].MaxNextNumber)
+  );
+  const [isVisible, setIsVisible] = useState(
+    Array(LEVEL[level].MaxNumber).fill(true)
+  );
 
   const renderNewRandomArray = () => {
-    setNumberArray(createRandomArray(1, 9));
-    setNextNumberArray(createRandomArray(10, 18));
-    setIsVisible(Array(9).fill(true));
+    setNumberArray(
+      createRandomArray(LEVEL[level].MinNumber, LEVEL[level].MaxNumber)
+    );
+    setNextNumberArray(
+      createRandomArray(LEVEL[level].MinNextNumber, LEVEL[level].MaxNextNumber)
+    );
+    setIsVisible(Array(LEVEL[level].MaxNumber).fill(true));
   };
+
+  useEffect(() => {
+    renderNewRandomArray();
+  }, [level]);
 
   const handleCardNumberChange = (number) => {
     setCardNumber(number);
   };
 
   const handleCardClick = (number) => {
-    if (number === 1) {
+    if (number === LEVEL[level].MinNumber) {
       startTimer();
     }
 
@@ -40,7 +54,7 @@ const NumberGame = ({
       const updateIsVisible = [...isVisible];
       const numberCardIndex = newNumberArray.indexOf(number);
 
-      if (number <= 9) {
+      if (number <= LEVEL[level].MaxNumber) {
         newNumberArray.splice(numberCardIndex, 1, nextNumberArray[number - 1]);
         setNumberArray(newNumberArray);
       } else {
@@ -50,7 +64,7 @@ const NumberGame = ({
     }
 
     // 수정해라.
-    if (number === 18) {
+    if (number === LEVEL[level].MaxNextNumber) {
       resetTimer();
       handleSetLocalStorage();
       alert(`게임 끝! 기록: ${formatTime(time)}초`);
@@ -62,7 +76,7 @@ const NumberGame = ({
   return (
     <NumberGameLayout>
       <NumberBoardTextStyle> 다음 숫자: {cardNumber}</NumberBoardTextStyle>
-      <NomberBoardContainer>
+      <NomberBoardContainer level={level}>
         {numberArray.map((number, index) => {
           return (
             <NumberCard
@@ -93,6 +107,7 @@ const NumberBoardTextStyle = styled.span`
 
 const NomberBoardContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: ${({ level }) =>
+    `repeat(${LEVEL[level].BoardNumber}, 1fr)`};
   gap: 0.5rem;
 `;

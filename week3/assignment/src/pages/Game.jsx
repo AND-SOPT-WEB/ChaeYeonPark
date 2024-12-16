@@ -8,6 +8,7 @@ import Ranking from "../components/Ranking";
 
 const Game = () => {
   const [content, setContent] = useState("GAME");
+  const [level, setLevel] = useState(1);
 
   const [gameRanking, setGameRanking] = useState(
     JSON.parse(localStorage.getItem("ranking"))
@@ -19,10 +20,15 @@ const Game = () => {
     setContent(content);
   };
 
+  const handleChangeLevel = (level) => {
+    setLevel(level)
+    console.log(level)
+  }
+
   const handleSetLocalStorage = () => {
     const newRank = {
       time: `${formatDate()}`,
-      level: "level 01",
+      level: `level ${level}`,
       play: `${formatTime(time)}`,
     };
 
@@ -45,6 +51,7 @@ const Game = () => {
       <Header
         handleChangeContent={handleChangeContent}
         content={content}
+        handleChangeLevel={handleChangeLevel}
         time={time}
       />
       {content === "GAME" ? (
@@ -53,6 +60,7 @@ const Game = () => {
           resetTimer={resetTimer}
           time={time}
           handleSetLocalStorage={handleSetLocalStorage}
+          level={level}
         />
       ) : (
         <Ranking
