@@ -3,6 +3,30 @@ import theme from "../styles/theme";
 import { formatRankingData } from "../utils/format";
 
 const Ranking = ({ gameRanking, handleResetLocalStorage }) => {
+  const levelOneRangking = gameRanking.filter(
+    (rank) => rank.level === "level 1"
+  );
+  const levelTwoRangking = gameRanking.filter(
+    (rank) => rank.level === "level 2"
+  );
+  const levelThreeRanking = gameRanking.filter(
+    (rank) => rank.level === "level 3"
+  );
+
+  const sortArray = (array) => {
+    return array.sort(
+      (a, b) => formatRankingData(a.play) - formatRankingData(b.play)
+    );
+  };
+
+  const sortedGameRanking = [
+    ...sortArray(levelThreeRanking),
+    ...sortArray(levelTwoRangking),
+    ...sortArray(levelOneRangking),
+  ];
+
+  console.log(sortedGameRanking);
+
   return (
     <RankingLayout>
       <RankingHeaderWrapper>
@@ -22,19 +46,15 @@ const Ranking = ({ gameRanking, handleResetLocalStorage }) => {
         </thead>
 
         <tbody>
-          {gameRanking
-            .sort(
-              (a, b) => formatRankingData(a.play) - formatRankingData(b.play)
-            )
-            .map((rank, index) => {
-              return (
-                <tr key={index}>
-                  <td>{rank.time}</td>
-                  <td>{rank.level}</td>
-                  <td>{rank.play}</td>
-                </tr>
-              );
-            })}
+          {sortedGameRanking.map((rank, index) => {
+            return (
+              <tr key={index}>
+                <td>{rank.time}</td>
+                <td>{rank.level}</td>
+                <td>{rank.play}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </RankingTableWrapper>
     </RankingLayout>
@@ -75,7 +95,3 @@ const RankingResetButtonStyle = styled.button`
 const RankingTableWrapper = styled.table`
   width: 100%;
 `;
-
-// const RankingTableHead = styled.th`
-//   background-color: ${theme.color.purple1};
-// `;
