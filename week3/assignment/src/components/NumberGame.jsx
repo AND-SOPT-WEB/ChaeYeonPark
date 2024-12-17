@@ -71,8 +71,7 @@ const NumberGame = ({
       }
     }
 
-    // 수정해라.
-    if (number === LEVEL[level].MaxNextNumber) {
+    if (number === LEVEL[level].MaxNextNumber && number === cardNumber) {
       resetTimer();
       handleSetLocalStorage();
       setGameTime(formatTime(time));
