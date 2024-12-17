@@ -21,9 +21,8 @@ const Game = () => {
   };
 
   const handleChangeLevel = (level) => {
-    setLevel(level)
-    console.log(level)
-  }
+    setLevel(level);
+  };
 
   const handleSetLocalStorage = () => {
     const newRank = {
@@ -39,7 +38,7 @@ const Game = () => {
 
   const handleResetLocalStorage = () => {
     setGameRanking([]);
-    localStorage.setItem("ranking", []);
+    localStorage.setItem("ranking", JSON.stringify([]));
   };
 
   if (!localStorage.getItem("ranking")) {

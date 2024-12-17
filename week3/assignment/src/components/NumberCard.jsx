@@ -24,6 +24,10 @@ const NumberCardLayout = styled.div`
   justify-content: center;
   align-items: center;
   visibility: ${({ isVisible }) => (!isVisible ? "hidden" : "visible")};
+
+  :active {
+    background-color: ${theme.color.purple5};
+  }
 `;
 
 const NumberCardTextStyle = styled.span`
