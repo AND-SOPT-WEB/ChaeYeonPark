@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>관리자페이지</title>
+  </head>
+  <body>
+    <header class="header">
+      <i class="fa-solid fa-bars"></i>
+      <h1>회원 관리 페이지</h1>
+      <span>chaeneey 😋</span>
+    </header>
+
+    <main class="main">
+      <section class="member-filter">
+        <section class="filter-content-wrapper">
+          <div class="filter-content filter-content-name">
+            <span>이름</span>
+            <input
+              class="filter-input filter-input-name"
+              placeholder="이름을 입력하세요"
+              value=""
+            />
+          </div>
+
+          <div class="filter-content filter-content-engname">
+            <span>영문이름</span>
+            <input
+              class="filter-input filter-input-engname"
+              placeholder="영문이름을 입력하세요"
+            />
+          </div>
+
+          <div class="filter-content filter-content-github">
+            <span>Github</span>
+            <input
+              class="filter-input filter-input-github"
+              placeholder="GitHub ID를 입력하세요"
+            />
+          </div>
+
+          <div class="filter-content filter-content-gender">
+            <span>성별</span>
+            <div class="filter-input">
+              <select class="filter-select filter-input-gender">
+                <option value="" disabled selected>성별 선택</option>
+                <option value="female">여자</option>
+                <option value="male">남자</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-content filter-content-role">
+            <span>역할</span>
+            <div class="filter-input">
+              <select class="filter-select filter-input-role">
+                <option value="" disabled selected>OB / YB 선택</option>
+                <option value="OB">OB</option>
+                <option value="YB">YB</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-content filter-content-week1">
+            <span>1주차 금잔디조</span>
+            <input
+              class="filter-input filter-input-week1"
+              placeholder="1주차 금잔디조를 입력하세요 (1~9)"
+            />
+          </div>
+
+          <div class="filter-content filter-content-week2">
+            <span>2주차 금잔디조</span>
+            <input
+              class="filter-input filter-input-week2"
+              placeholder="2주차 금잔디조를 입력하세요 (1~9)"
+            />
+          </div>
+        </section>
+
+        <section class="filter-button-wrapper">
+          <button class="filter-button filter-reset-button">초기화</button>
+          <button class="filter-button filter-search-button">검색</button>
+        </section>
+      </section>
+
+      <section class="member-table">
+        <section class="table-button-wrapper">
+          <button class="table-button member-delete-button">선택삭제</button>
+          <button class="table-button modal-open-button">추가</button>
+        </section>
+
+        <section class="table-content-wrapper">
+          <table class="table-content">
+            <thead>
+              <tr>
+                <th><input type="checkbox" class="table-header-checkbox" /></th>
+                <th>이름</th>
+                <th>영문이름</th>
+                <th>GitHub</th>
+                <th>성별</th>
+                <th>역할</th>
+                <th>1주차 금잔디</th>
+                <th>2주차 금잔디</th>
+              </tr>
+            </thead>
+            <tbody class="table-body"></tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+
+    <dialog class="add-member-modal">
+      <div class="member-modal">
+        <section class="modal-header">
+          <h2>새 멤버 추가</h2>
+          <i class="fa-solid fa-x modal-close-button"></i>
+        </section>
+
+        <from class="modal-content-wrapper">
+          <section class="modal-content">
+            <span>이름</span>
+            <input
+              class="modal-input modal-input-name"
+              placeholder="이름을 입력하세요"
+            />
+          </section>
+
+          <section class="modal-content">
+            <span>영문 이름</span>
+            <input
+              class="modal-input modal-input-engname"
+              placeholder="영문 이름을 입력하세요"
+            />
+          </section>
+
+          <section class="modal-content">
+            <span>GitHub ID</span>
+            <input
+              class="modal-input modal-input-github"
+              placeholder="GitHub ID를 입력하세요"
+            />
+          </section>
+
+          <section class="modal-content">
+            <span>성별</span>
+            <select class="modal-input modal-input-gender">
+              <option value="" disabled selected>성별 선택</option>
+              <option value="female">여자</option>
+              <option value="male">남자</option>
+            </select>
+          </section>
+
+          <section class="modal-content">
+            <span>역할</span>
+            <select class="modal-input modal-input-role">
+              <option value="" disabled selected>OB / YB 선택</option>
+              <option value="OB">OB</option>
+              <option value="YB">YB</option>
+            </select>
+          </section>
+
+          <section class="modal-content">
+            <span>1주차 금잔디조</span>
+            <input
+              class="modal-input modal-input-week1"
+              placeholder="1주차 금잔디조를 입력하세요 (1~9)"
+            />
+          </section>
+
+          <section class="modal-content">
+            <span>2주차 금잔디조</span>
+            <input
+              class="modal-input modal-input-week2"
+              placeholder="2주차 금잔디조를 입력하세요 (1~9)"
+            />
+          </section>
+        </div>
+
+        <button class="add-member-button">추가</button>
+      </form>
+    </dialog>
+
+    <script
+      src="https://kit.fontawesome.com/11cad02120.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./memberList.js"></script>
+  </body>
+</html>
